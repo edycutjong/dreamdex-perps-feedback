@@ -1,0 +1,72 @@
+{
+  "sdk": "0.32.1",
+  "txs": 5,
+  "successful": 5,
+  "toPerpPool": 5,
+  "gasUsedAbove1_56M": 4,
+  "iocGasUsedAbove7_7M": 3,
+  "gasUsedAbove10M": 3,
+  "costAbove0_003STT": 5,
+  "rows": [
+    {
+      "hash": "0x94f9c6e14d1c6c94822f94082f4feac8a0993246db929f0ca5b7053559d5ffac",
+      "function": "placeOrderFor",
+      "market": "ADA",
+      "utc": "2026-10-20T16:30:45.000Z",
+      "orderType": 2,
+      "status": "success",
+      "gasLimit": "10000000",
+      "gasUsed": "838808",
+      "effectiveGasPrice": "6000000000",
+      "costSTT": "0.005032848"
+    },
+    {
+      "hash": "0x9abaa49de446e8ca4203337cb8e9f5fd28c087a05d47f3b8fbc7298778ebf1c6",
+      "function": "placeOrderFor",
+      "market": "ADA",
+      "utc": "2026-10-20T16:34:50.000Z",
+      "orderType": 2,
+      "status": "success",
+      "gasLimit": "10000000",
+      "gasUsed": "2771932",
+      "effectiveGasPrice": "6000000000",
+      "costSTT": "0.016631592"
+    },
+    {
+      "hash": "0x978cc8ff166263878f4c1e6f514112233114a5f987593de62823b5686a0ae7cf",
+      "function": "placeOrderFor",
+      "market": "NEAR",
+      "utc": "2026-10-20T17:45:41.000Z",
+      "orderType": 2,
+      "status": "success",
+      "gasLimit": "46738641",
+      "gasUsed": "10356133",
+      "effectiveGasPrice": "6000000000",
+      "costSTT": "0.062136798"
+    },
+    {
+      "hash": "0x5cdb4cf75c28f977b891b02f6d0805146323f1667dbcf12ca8dafced7ea2256e",
+      "function": "placeOrderFor",
+      "market": "XRP",
+      "utc": "2026-10-20T17:43:06.000Z",
+      "orderType": 2,
+      "status": "success",
+      "gasLimit": "58971189",
+      "gasUsed": "13104709",
+      "effectiveGasPrice": "6000000000",
+      "costSTT": "0.078628254"
+    },
+    {
+      "hash": "0x20d76faf412d3a4b3d632b6fb95c4981cc8899568b03fad56bfb28613dbd8327",
+      "function": "placeOrderFor",
+      "market": "XRP",
+      "utc": "2026-10-20T17:41:21.000Z",
+      "orderType": 2,
+      "status": "success",
+      "gasLimit": "29166906",
+      "gasUsed": "13445881",
+      "effectiveGasPrice": "6000000000",
+      "costSTT": "0.080675286"
+    }
+  ]
+}
