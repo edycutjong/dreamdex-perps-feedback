@@ -14,7 +14,7 @@ export async function lateSettlements(client) {
         if (accrued > 1) accruedOverOne++;
         const step = BigInt(r.fundingRate) !== 0n
           ? Number(((BigInt(r.cumulativeFundingPerUnit) - BigInt(prev?.cumulativeFundingPerUnit ?? 0)) * 8000n) / (BigInt(r.fundingRate) * BigInt(r.indexPrice))) / 1000 : null;
-        if (settled > 1) late.push({ market: p.baseSymbol, pool: p.poolAddress, timestamp: Number(r.timestamp), utc: new Date(Number(r.timestamp) * 1000).toISOString(),
+        if (settled > 1) late.push({ market: p.baseSymbol, pool: p.poolAddress, firstSettlement: prev === undefined, timestamp: Number(r.timestamp), utc: new Date(Number(r.timestamp) * 1000).toISOString(),
           intervalsSettled: settled, intervalsAccrued: accrued, fundingIntervalSec: r.fundingIntervalSec,
           intervalsInCumulativeStep: step, secondsNotAccrued: (settled - accrued) * Number(r.fundingIntervalSec), txHash: r.txHash });
         prev = r;
