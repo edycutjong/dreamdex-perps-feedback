@@ -26,6 +26,7 @@ Live OI changes between runs; the full 21-row output of run 1 is in `evidence/00
 
 ## Evidence
 - `evidence/001-run1.json`, `evidence/001-run2.json`: two fresh-process runs of the repro.
+- `evidence/docs-excerpts-2026-10-21.txt`: the docs "Markets" table as served on 2026-10-21, the same values as `repro/lib/docs-table.mjs`.
 - Numbers come from `getPerpRiskParams` (pool parameters) and `listPerpMarkets` (indexer); no transaction is involved.
 - This report does not claim which of the two caps the matching engine enforces; it only shows the three sources (docs table, pool parameter, live open interest) disagree.
 
