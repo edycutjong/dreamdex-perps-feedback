@@ -13,7 +13,7 @@ Everything the page serves about what the Builder supports should agree: the ser
 ## Actual
 The HTML returned by the server says "Build, test, and deploy dreamBots for Spot and Event Contracts , in five steps." and the meta description says "Configure, test, and deploy a dreamBot trading bot for Spot and Event Contracts on dreamDEX." Perps is not mentioned in either, although the feature flags embedded in that same response contain `"dreambot-perps":true`.
 After hydration in a browser the sentence reads "Build, test, and deploy dreamBots for Spot, Event Contracts and Perps, in five steps."
-So anything that reads the page without running its JavaScript (link previews, search snippets, scripted readers) concludes the Builder has no perps support, which contradicts the developer docs sentence above. `og:description` ("...order book for spot and event contracts") also omits perps.
+So the server-rendered page and its meta tags contradict both the hydrated page and the developer docs sentence above. `og:description` ("...order book for spot and event contracts") also omits perps, though that line may be intentional generic site copy.
 
 ## Evidence
 - `evidence/005-run1.json`, `evidence/005-run2.json`: two fresh-process runs of the repro, byte-identical (`serverRenderedSentence`, `metaDescription`, `ogDescription`, `featureFlagDreambotPerps: "true"`).

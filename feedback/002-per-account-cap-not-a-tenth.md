@@ -1,4 +1,4 @@
-# Per-account position cap is a tenth of the documented open interest cap on only 10 of 21 markets (0.2 on 9, 0.405 on BTC, 1.0 on ZEC)
+# Per-account position cap is a tenth of the documented open interest cap on only 10 of 21 markets (0.2 on 8, 0.202 on BNB, 0.405 on BTC, 1.0 on ZEC)
 Severity: normal
 Area: docs
 

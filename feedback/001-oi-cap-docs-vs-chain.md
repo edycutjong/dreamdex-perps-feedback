@@ -1,4 +1,4 @@
-# Perps docs "Open interest cap" column is stale: live open interest already exceeds it on BTC and XRP, and the on-chain cap differs on 20 of 21 markets
+# Perps docs "Open interest cap" disagrees with live open interest (above it on BTC and XRP) and with the pool's `maxOpenInterest` on 20 of 21 markets
 Severity: normal
 Area: docs
 
