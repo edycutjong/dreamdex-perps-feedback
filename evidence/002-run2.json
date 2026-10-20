@@ -2,6 +2,7 @@
   "sdk": "0.32.1",
   "totalMarkets": 21,
   "marketsAtOneTenth": 10,
+  "marketsAtOneTenthOfChainCap": 1,
   "byShare": {
     "1": [
       "ZEC"
@@ -35,132 +36,211 @@
       "BTC"
     ]
   },
+  "byChainShare": {
+    "0.025": [
+      "ZRO",
+      "LIT",
+      "VVV",
+      "1000PEPE",
+      "PUMP",
+      "WLD"
+    ],
+    "0.25": [
+      "ZEC"
+    ],
+    "0.1": [
+      "TAO"
+    ],
+    "0.0499": [
+      "NEAR"
+    ],
+    "0.05": [
+      "XLM",
+      "AVAX",
+      "LINK",
+      "SUI",
+      "ADA",
+      "DOGE",
+      "XRP",
+      "HYPE",
+      "SOL",
+      "ETH"
+    ],
+    "0.0504": [
+      "BNB"
+    ],
+    "0.2026": [
+      "BTC"
+    ]
+  },
   "rows": [
     {
       "market": "ZRO",
       "docCap": 250599.5,
+      "chainMaxOpenInterest": 1002397.9999999999,
       "maxPositionSize": 25059.899999999998,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.025
     },
     {
       "market": "LIT",
       "docCap": 138896.6,
+      "chainMaxOpenInterest": 555586.4,
       "maxPositionSize": 13889.6,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.025
     },
     {
       "market": "VVV",
       "docCap": 21786.14,
+      "chainMaxOpenInterest": 87144.56,
       "maxPositionSize": 2178.61,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.025
     },
     {
       "market": "1000PEPE",
       "docCap": 130285600,
+      "chainMaxOpenInterest": 521142400,
       "maxPositionSize": 13028500,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.025
     },
     {
       "market": "PUMP",
       "docCap": 87993700,
+      "chainMaxOpenInterest": 351974800,
       "maxPositionSize": 8799300,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.025
     },
     {
       "market": "ZEC",
       "docCap": 420,
+      "chainMaxOpenInterest": 1680,
       "maxPositionSize": 420,
-      "shareOfDocCap": 1
+      "shareOfDocCap": 1,
+      "shareOfChainCap": 0.25
     },
     {
       "market": "TAO",
       "docCap": 2185.491,
+      "chainMaxOpenInterest": 2185.491,
       "maxPositionSize": 218.549,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.1
     },
     {
       "market": "WLD",
       "docCap": 1264000,
+      "chainMaxOpenInterest": 5056000,
       "maxPositionSize": 126400,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.025
     },
     {
       "market": "NEAR",
       "docCap": 250410,
+      "chainMaxOpenInterest": 1001640.0000000001,
       "maxPositionSize": 50000,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.0499
     },
     {
       "market": "XLM",
       "docCap": 2677780,
+      "chainMaxOpenInterest": 10711120,
       "maxPositionSize": 535556,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "AVAX",
       "docCap": 66672.2,
+      "chainMaxOpenInterest": 266688.8,
       "maxPositionSize": 13334.4,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "LINK",
       "docCap": 42643.6,
+      "chainMaxOpenInterest": 170574.4,
       "maxPositionSize": 8528.6,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "SUI",
       "docCap": 635009,
+      "chainMaxOpenInterest": 2540036,
       "maxPositionSize": 127000,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "ADA",
       "docCap": 2254678,
+      "chainMaxOpenInterest": 9018712,
       "maxPositionSize": 450934,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "BNB",
       "docCap": 693.975,
+      "chainMaxOpenInterest": 2775.9,
       "maxPositionSize": 140,
-      "shareOfDocCap": 0.202
+      "shareOfDocCap": 0.202,
+      "shareOfChainCap": 0.0504
     },
     {
       "market": "DOGE",
       "docCap": 5613590,
+      "chainMaxOpenInterest": 22454360,
       "maxPositionSize": 1122700,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "XRP",
       "docCap": 344632,
+      "chainMaxOpenInterest": 1378528,
       "maxPositionSize": 68926.4,
-      "shareOfDocCap": 0.2
+      "shareOfDocCap": 0.2,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "HYPE",
       "docCap": 23812.72,
+      "chainMaxOpenInterest": 47625.44,
       "maxPositionSize": 2381.27,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "SOL",
       "docCap": 47654.44,
+      "chainMaxOpenInterest": 95308.88,
       "maxPositionSize": 4765.44,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "ETH",
       "docCap": 3995.6125,
+      "chainMaxOpenInterest": 7991.224999999999,
       "maxPositionSize": 399.5612,
-      "shareOfDocCap": 0.1
+      "shareOfDocCap": 0.1,
+      "shareOfChainCap": 0.05
     },
     {
       "market": "BTC",
       "docCap": 246.81545,
+      "chainMaxOpenInterest": 493.6309,
       "maxPositionSize": 100,
-      "shareOfDocCap": 0.405
+      "shareOfDocCap": 0.405,
+      "shareOfChainCap": 0.2026
     }
   ]
 }
