@@ -23,6 +23,7 @@ A trader or bot that sizes against "a tenth" gets the wrong limit on 20 of 21 ma
 
 ## Evidence
 - `evidence/002-run1.json`, `evidence/002-run2.json`: two fresh-process runs, byte-identical; `byShare` (docs cap) and `byChainShare` (pool `maxOpenInterest`) list the markets for each ratio; `marketsAtOneTenth` is 10 and `marketsAtOneTenthOfChainCap` is 1.
+- `evidence/docs-excerpts-2026-10-21.txt`: the docs "Markets" table as served on 2026-10-21, the same values as `repro/lib/docs-table.mjs`.
 - Source of the numbers: `getPerpRiskParams` on each pool (on-chain), no transaction involved. The documented caps are the ones also used in report 001.
 
 ## Environment
