@@ -1,0 +1,9 @@
+{
+  "sdk": "0.32.1",
+  "hasOperatorPermissionsRegistry": false,
+  "stopRegistryOnMarketRow": "0x85a0879d19777c343eb317a890d5058ab92b8f5d",
+  "result": {
+    "name": "NotConfiguredError",
+    "message": "@somnia-chain/markets-sdk: a perp stop order — needs operatorRegistry or addresses.operatorPermissionsRegistry"
+  }
+}
