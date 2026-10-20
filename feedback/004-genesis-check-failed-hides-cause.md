@@ -9,7 +9,7 @@ Area: SDK
 
 ## Expected
 Developer docs `/docs/developers/perps-testnet`, "Common pitfalls": "The SDK reads the chain over WebSocket. An environment that only proxies HTTP fails on the first chain read with genesis check failed. Give it access to the WebSocket endpoint above."
-The docs name the symptom; they do not make the label accurate. An unreachable WebSocket should be reported the way the SDK reports a missing one: as a connection problem (`NotConfiguredError` names the missing `wsRpcUrl`), with the network failure (connection refused, HTTP 502 on the upgrade) in `error.message`. The "genesis check" label should be kept for what the SDK uses it for elsewhere: a block-1 hash on the retired-genesis list, which already throws its own clear `NotConfiguredError`.
+The docs name the symptom; they do not make the label accurate. An unreachable WebSocket should be reported the way the SDK already reports a missing one: as a connection problem, with the transport failure (connection refused, HTTP 502 on the upgrade) in `error.message`. Today the two cases differ: a missing URL gets `NotConfiguredError` naming `wsRpcUrl`, an unreachable one gets `RpcError` "genesis check failed".
 
 ## Actual
 The developer docs already name this message as the symptom of a missing WebSocket, so the message itself is documented; what is missing is the detail that makes it self-explanatory.
