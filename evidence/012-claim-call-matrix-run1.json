@@ -1,0 +1,77 @@
+{
+  "distributor": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+  "results": {
+    "probeWallet": {
+      "account": "0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b",
+      "claimed": false,
+      "eligible": true,
+      "reason": null,
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "freshWallet": {
+      "account": "0x0d6D4dd4125477f5f0E380eDE951B37a395Fa036",
+      "claimed": false,
+      "eligible": true,
+      "reason": null,
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "creditSender": {
+      "account": "0x792182e6b2bd50deb22dc5436f7c518b34f9bd12",
+      "claimed": false,
+      "eligible": true,
+      "reason": null,
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "zeroAddress": {
+      "account": "0x0000000000000000000000000000000000000000",
+      "claimed": false,
+      "eligible": true,
+      "reason": null,
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "credited1": {
+      "account": "0x18d414dbcf0c399633afedf3106013a10e64e072",
+      "claimed": true,
+      "eligible": false,
+      "reason": "alreadyClaimed",
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "credited2": {
+      "account": "0xc7ad9b4e382faf2ffe697f3cfdbebbb9eb50fb83",
+      "claimed": true,
+      "eligible": false,
+      "reason": "alreadyClaimed",
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "credited3": {
+      "account": "0x38b96d17b6b4b8518976879b84bf74a5aa788c77",
+      "claimed": true,
+      "eligible": false,
+      "reason": "alreadyClaimed",
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    },
+    "credited4": {
+      "account": "0x762a46d39353d6dd6a0fc20da3ed394c144198a7",
+      "claimed": true,
+      "eligible": false,
+      "reason": "alreadyClaimed",
+      "claimCall": "reverted",
+      "revertData": "0x3e31dcc2"
+    }
+  },
+  "summary": {
+    "callers": 8,
+    "reverted": 8,
+    "distinctRevertData": [
+      "0x3e31dcc2"
+    ],
+    "sdkSaysAlreadyClaimed": 4
+  }
+}
