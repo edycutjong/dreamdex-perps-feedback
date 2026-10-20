@@ -9,7 +9,7 @@ Area: SDK
 
 ## Expected
 Developer docs `/docs/developers/perps-testnet`, "Common pitfalls": "The SDK reads the chain over WebSocket. An environment that only proxies HTTP fails on the first chain read with genesis check failed. Give it access to the WebSocket endpoint above."
-The docs name the symptom; they do not make the label accurate. A connectivity failure should not be labelled as a genesis-check failure when no genesis was compared. The error should say that the WebSocket could not be reached, and carry the transport failure (connection refused, HTTP 502 on the upgrade) in `error.message`, where a caller logs it. Today a missing URL gets a specific `NotConfiguredError` naming `wsRpcUrl`; an unreachable one gets `RpcError` "genesis check failed".
+The developer docs and the SDK agree on the behaviour: an unreachable WebSocket surfaces as "genesis check failed". This report is about the label and the missing cause, not the behaviour. A connectivity failure should not be labelled as a genesis-check failure when no genesis was compared. The error should say that the WebSocket could not be reached, and carry the transport failure (connection refused, HTTP 502 on the upgrade) in `error.message`, where a caller logs it. Today a missing URL gets a specific `NotConfiguredError` naming `wsRpcUrl`; an unreachable one gets `RpcError` "genesis check failed".
 
 ## Actual
 The two unreachable cases (`wsRefused`, `wsWrongPath`) throw the same error: `RpcError: @somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed`.
