@@ -1,4 +1,4 @@
-# dreamBot Builder: server-rendered HTML and meta tags say "Spot and Event Contracts" while the page (and the flag in the same HTML) include Perps
+# dreamBot Builder: server-rendered HTML and meta description say "Spot and Event Contracts" while the page (and the flag in the same HTML) include Perps
 Severity: normal
 Area: app
 
@@ -8,12 +8,12 @@ Area: app
 
 ## Expected
 Developer docs `/docs/developers/perps-testnet`: "the [dreamBot Builder](https://app.testnet.dreamdex.io/dreambot-builder) sets up a perps bot for you."
-Everything the page serves about what the Builder supports should agree: the server-rendered text, `<meta name="description">`, `og:description`, and the hydrated page.
+Everything the page serves about what the Builder supports should agree: the server-rendered text, `<meta name="description">`, and the hydrated page.
 
 ## Actual
 The HTML returned by the server says "Build, test, and deploy dreamBots for Spot and Event Contracts , in five steps." and the meta description says "Configure, test, and deploy a dreamBot trading bot for Spot and Event Contracts on dreamDEX." Perps is not mentioned in either, although the feature flags embedded in that same response contain `"dreambot-perps":true`.
 After hydration in a browser the sentence reads "Build, test, and deploy dreamBots for Spot, Event Contracts and Perps, in five steps."
-So the server-rendered page and its meta tags contradict both the hydrated page and the developer docs sentence above. `og:description` ("...order book for spot and event contracts") also omits perps, though that line may be intentional generic site copy.
+So the server-rendered sentence and the meta description contradict both the hydrated page and the developer docs sentence above. (The generic site `og:description` also omits perps; it is recorded in the evidence but not part of this report.)
 
 ## Evidence
 - `evidence/005-run1.json`, `evidence/005-run2.json`: two fresh-process runs of the repro, byte-identical (`serverRenderedSentence`, `metaDescription`, `ogDescription`, `featureFlagDreambotPerps: "true"`).
