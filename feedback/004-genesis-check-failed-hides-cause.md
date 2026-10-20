@@ -12,18 +12,18 @@ Developer docs `/docs/developers/perps-testnet`, "Common pitfalls": "The SDK rea
 The docs name the symptom; they do not make the label accurate. A connectivity failure should not be labelled as a genesis-check failure when no genesis was compared. The error should say that the WebSocket could not be reached, and carry the transport failure (connection refused, HTTP 502 on the upgrade) in `error.message`, where a caller logs it. Today a missing URL gets a specific `NotConfiguredError` naming `wsRpcUrl`; an unreachable one gets `RpcError` "genesis check failed".
 
 ## Actual
-The developer docs already name this message as the symptom of a missing WebSocket, so the message itself is documented; what is missing is the detail that makes it self-explanatory.
-Both cases throw the same error: `RpcError: @somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed`.
+The two unreachable cases (`wsRefused`, `wsWrongPath`) throw the same error: `RpcError: @somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed`.
 The real failure is only on `error.cause`: `connect ECONNREFUSED 127.0.0.1:9` in the first case, `Unexpected server response: 502` in the second. A caller who logs `error.message` (the usual thing) sees nothing about the network.
 In `dist/client.js` (`makeGenesisCheck`) the check reads block 1 once to detect the retired Hideki v1 genesis. A block-1 hash on the retired list throws a clear `NotConfiguredError` ("this RPC serves the retired ... genesis"). Any `getBlock` failure other than a missing block or an SDK error is re-thrown as `new RpcError("getBlock", "genesis check failed", { cause })`. So the "genesis check failed" message is only produced when block 1 could not be read at all, that is, when no genesis was compared: a plain connectivity or gateway error is labelled as a genesis problem.
 Related inconsistency: the case `noWsConfigured` (no `webSocket` URL at all) fails with a clear `NotConfiguredError` ("this operation needs chain access — needs wsRpcUrl in createClient (or a chain whose rpcUrls carry a webSocket endpoint)"), so only an unreachable WebSocket gets the misleading label.
 
 ## Evidence
 - `evidence/004-run1.json`, `evidence/004-run2.json`: two fresh-process runs, byte-identical.
+- `evidence/docs-excerpts-2026-10-20.txt`: the developer-docs pitfall quoted above, as served on 2026-10-20 (UTC).
 - Output of run 1: `noWsConfigured` -> `NotConfiguredError` with the message above; `wsRefused` -> message "rpc getBlock failed: genesis check failed", cause "connect ECONNREFUSED 127.0.0.1:9"; `wsWrongPath` -> same message, cause "Unexpected server response: 502".
 
 ## Environment
 - `@somnia-chain/markets-sdk` 0.32.1 (viem 2.57.7), Node v22.22.0
 - Somnia Hideki testnet (Tokyo, chain 50383), read-only
 - Wallet: none (read-only calls)
-- Date: 2026-10-20
+- Date: 2026-10-20 (UTC)
