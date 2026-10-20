@@ -16,7 +16,7 @@ The package states three different rules:
 2. `dist/store.d.ts:245` (on `LiveFundingUpdate.intervalsSettled`) and the comment in `dist/eventsAbi.js:195` (on the `FundingUpdated` event): "Accrual is capped at n = window / interval". That is, up to 8 intervals on today's 8 h / 1 h markets: the `min(intervalsSettled, n)` that rule 1 calls an error.
 3. `docs/PERPS.md:507-509`: "for a HISTORICAL row that caught up over several intervals, multiply that by the row's `intervalsAccrued`, since one settlement can charge more than one interval's worth."
 
-The chain follows rule 1. Of 9,721 indexed settlements, 27 came late, covering up to 58 intervals (`maxIntervalsSettledInOneRow: 58`). None charged more than one interval (`rowsAccruingMoreThanOneInterval: 0`). Report 007 re-derives this from the `cumulativeFundingPerUnit` step and the transaction receipts.
+The package contradicts itself whatever the chain does. For which rule the chain follows, see report 007: every late settlement charged one interval. The scan in this repro prints the same totals (`maxIntervalsSettledInOneRow: 58`, `rowsAccruingMoreThanOneInterval: 0`), so rule 1 is the one that matches.
 A developer who follows rule 2 computes `min(intervalsSettled, 8)` intervals for a late settlement. On these 27 rows that is 2 to 8 times what the chain charged. Rule 3's procedure (multiply by `intervalsAccrued`) gives the right number, but its stated reason ("can charge more than one interval's worth") contradicts rule 1 and the history.
 
 ## Evidence
