@@ -67,6 +67,11 @@ The SDK reads the chain over WebSocket. An environment that only proxies HTTP fa
 Paper USDso blocks some markets. Increasing a position in a market outside the credit's allowlist reverts, and getMaxPerpOrderSize reports it as limitedBy: "voucherBlocked".
 Each account has a position cap per market, a tenth of the market's open interest cap on most markets. An order that would take the account past it reverts with MaxPositionSizeExceeded() (0x714b36d6); getMaxPerpOrderSize reports the cap as maxPositionSize.
 
+## https://app.testnet.dreamdex.io/docs/developers/perps-testnet (Get test funds; Leave plenty of gas)
+STT for gas. The simplest route is through the app: sign in at app.testnet.dreamdex.io, then Link a Bot with your key's address and use Send it … for gas or Top up. Gas is billed on what a transaction uses, not on its gas limit: transactions to perp pools measured on testnet cost between 0.0003 and 0.003 STT each.
+Successful placeOrderFor transactions on testnet used up to about 1.56M gas, and a simple resting order simulated with a 1.5M limit reverts while the same call with 3.2M succeeds. eth_estimateGas returned 3.2M for a resting order and 7.7M for an IOC that crossed several price levels. Gas is billed on what is used, so a generous limit costs nothing extra: the bot kit sends every perp order with 10,000,000.
+A transaction that runs out of gas or reverts lands with status 0 and no reason in the receipt. Replay it with eth_call at the parent block to see the revert.
+
 ## Negative search: "forgiv" (forgive / forgiven) on the four pages above
 trading: 0 matches
 margin: 0 matches
