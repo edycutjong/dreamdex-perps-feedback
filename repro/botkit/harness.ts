@@ -39,6 +39,8 @@ export interface Position {
 export interface Mock {
   /** Orders the mock book currently holds (placed and not yet cancelled). */
   live: Set<bigint>;
+  /** Most orders the mock book ever held at once. */
+  peak: number;
   placed: Array<Record<string, any>>;
   cancelled: bigint[];
   stopOrders: Array<Record<string, any>>;
@@ -59,6 +61,7 @@ export interface Mock {
 export function makeMock(extraConfig: Record<string, unknown> = {}): Mock {
   const m: Mock = {
     live: new Set(),
+    peak: 0,
     placed: [],
     cancelled: [],
     stopOrders: [],
@@ -127,6 +130,7 @@ export function makeMock(extraConfig: Record<string, unknown> = {}): Mock {
         const id = m.nextId++;
         m.placed.push({ ...o, orderId: id });
         if (o.orderType !== 2) m.live.add(id);
+        m.peak = Math.max(m.peak, m.live.size);
         return { hash: "0x" + "ab".repeat(32), receipt: { status: "success" }, orderId: id, fills: [] };
       },
       cancelOrder: async ({ orderId }: { orderId: bigint }) => {

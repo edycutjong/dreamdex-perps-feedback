@@ -1,0 +1,71 @@
+diff --git a/packages/perp-core/src/orders.ts b/packages/perp-core/src/orders.ts
+index 634eedd..04a54d0 100644
+--- a/packages/perp-core/src/orders.ts
++++ b/packages/perp-core/src/orders.ts
+@@ -199,11 +199,18 @@ export async function placePerp(args: PlaceArgs): Promise<PlaceResult> {
+   return { sent: true, orderId: res.orderId, filled };
+ }
+ 
+-/** Cancel one resting order, tolerating the race where it already went away. */
+-export async function cancelQuietly(ctx: WriteCtx, market: PerpMarket, orderId: bigint): Promise<void> {
++/**
++ * Cancel one resting order, tolerating the race where it already went away.
++ *
++ * Resolves true when the order is gone: cancelled, or the pool says it no longer
++ * exists. Resolves false when the cancel FAILED (a transport error, a revert for
++ * another reason) and the order may still be resting, so a caller that re-quotes
++ * can keep track of it instead of stacking a second order on top.
++ */
++export async function cancelQuietly(ctx: WriteCtx, market: PerpMarket, orderId: bigint): Promise<boolean> {
+   if (ctx.config.dryRun) {
+     console.log(`[dry-run] would cancel order ${orderId}`);
+-    return;
++    return true;
+   }
+   try {
+     if (ctx.tradingKey) {
+@@ -211,10 +218,17 @@ export async function cancelQuietly(ctx: WriteCtx, market: PerpMarket, orderId:
+     } else {
+       await ctx.exchange.trader.cancelOrder({ pool: market.info.poolAddress, orderId });
+     }
++    return true;
+   } catch (err) {
++    const message = (err as Error).message;
+     // An order that filled or expired between the read and the cancel is not a
+     // failure of the cancel; a cascade of these means the quote is too slow.
+-    console.log(`cancel ${orderId} skipped: ${(err as Error).message.slice(0, 120)}`);
++    if (message.includes("OrderDoesNotExist") || message.includes("OrderAlreadyExpired")) {
++      console.log(`cancel ${orderId} skipped: the order is already gone`);
++      return true;
++    }
++    console.log(`cancel ${orderId} FAILED, the order may still be resting: ${message.slice(0, 120)}`);
++    return false;
+   }
+ }
+ 
+diff --git a/strategies/perp-maker/src/index.ts b/strategies/perp-maker/src/index.ts
+index 56787b6..136eeac 100644
+--- a/strategies/perp-maker/src/index.ts
++++ b/strategies/perp-maker/src/index.ts
+@@ -126,11 +126,17 @@ async function main(): Promise<void> {
+       continue;
+     }
+ 
+-    if (resting.bid || resting.ask) {
+-      for (const id of [resting.bid, resting.ask]) {
+-        if (id !== undefined) await cancelQuietly(ctx, market, id);
++    if (resting.bid !== undefined || resting.ask !== undefined) {
++      const stuck: Quote = { atMark: 0 };
++      if (resting.bid !== undefined && !(await cancelQuietly(ctx, market, resting.bid))) stuck.bid = resting.bid;
++      if (resting.ask !== undefined && !(await cancelQuietly(ctx, market, resting.ask))) stuck.ask = resting.ask;
++      resting = stuck;
++      if (stuck.bid !== undefined || stuck.ask !== undefined) {
++        // A quote that could not be cancelled may still be live: quoting again now would stack a second pair on it.
++        console.log("an old quote could not be cancelled, not quoting again until it is");
++        await sleep(REFRESH_MS, stopped);
++        continue;
+       }
+-      resting = { atMark: 0 };
+     }
+ 
+     const inventory = me ? await inventoryUsdso(ctx, fresh, mark) : 0;

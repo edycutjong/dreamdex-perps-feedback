@@ -1,0 +1,14 @@
+== patched with 103-cancel-quietly-report-failures.patch
+
+ RUN  v2.1.9 <tmp>/bot-kit/packages/perp-core
+
+ ✓ tests/units.test.ts (19 tests) 4ms
+ ✓ tests/103-cancel-quietly-swallows-failures.test.ts (1 test) 227ms
+ ✓ tests/trading-key.test.ts (12 tests) 26ms
+
+ Test Files  3 passed (3)
+      Tests  32 passed (32)
+   Start at  06:15:49
+   Duration  605ms (transform 138ms, setup 0ms, collect 569ms, tests 257ms, environment 0ms, prepare 207ms)
+
+exit 0
