@@ -1,0 +1,26 @@
+{
+  "ranAt": "2026-10-20T18:00:55.472Z",
+  "distinctTransactions": 352,
+  "directPlaceOrderFor": 2,
+  "gasUsedAbove1_56M": 1,
+  "gasUsedAbove10M": 0,
+  "costAbove0_003STT": 2,
+  "found": [
+    {
+      "hash": "0x9abaa49de446e8ca4203337cb8e9f5fd28c087a05d47f3b8fbc7298778ebf1c6",
+      "market": "ADA",
+      "status": "success",
+      "gasLimit": "10000000",
+      "gasUsed": "2771932",
+      "costSTT": "0.016631592"
+    },
+    {
+      "hash": "0x94f9c6e14d1c6c94822f94082f4feac8a0993246db929f0ca5b7053559d5ffac",
+      "market": "ADA",
+      "status": "success",
+      "gasLimit": "10000000",
+      "gasUsed": "838808",
+      "costSTT": "0.005032848"
+    }
+  ]
+}
