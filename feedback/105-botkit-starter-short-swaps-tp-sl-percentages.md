@@ -23,7 +23,7 @@ const stopLoss   = SIDE === "long" ? down : up;
 ```
 `up` always uses the take-profit percentage and `down` always uses the stop-loss percentage. For a long that is right. For a short, `takeProfit = down` therefore uses `STOP_LOSS_PCT` and `stopLoss = up` uses `TAKE_PROFIT_PCT`: the legs are on the right sides of the mark but at each other's distances.
 In the test (mark 100,000, defaults) the short's take-profit leg is armed at 98,999.99 (about -1%, tick alignment takes the last cent off 99,000; -2% was configured) and its stop-loss leg at about 102,000 (+2%, where +1% was configured; the test asserts 101,000 and stops at the first failing assertion, so the 102,000 figure comes from the same formula and was not printed). The start-up line still says `take-profit 2% stop-loss 1%`.
-The effect is that, on a short, a user who sets a tight stop-loss gets a stop-loss that many times wider (with the defaults twice as wide), and the take-profit is taken at half the configured distance. That follows from the code and the test's observed trigger price; no order was filled against the real pool.
+The effect is that, on a short, the stop-loss sits at the take-profit distance and the take-profit at the stop-loss distance (with the defaults: stop-loss 2% instead of 1%, take-profit 1% instead of 2%), so whenever `PERP_TAKE_PROFIT_PCT` is larger than `PERP_STOP_LOSS_PCT` the short's loss limit is wider than configured. That follows from the code and the test's observed trigger price; no order was filled against the real pool.
 The same `takeProfit`/`stopLoss` values are used by the registry bracket (`armBracket`, index.ts:187) and by the trading-key mode's own watch (`hitTakeProfit` / `hitStopLoss`, index.ts:224-225), so both modes inherit the wrong distances for a short.
 
 ## Evidence
@@ -34,6 +34,6 @@ The same `takeProfit`/`stopLoss` values are used by the registry bracket (`armBr
 
 ## Environment
 - `somnia-chain/dreamdex-bot-kit` @ `25798660bbe4674a6f83a960b202852896e2fed4`, `perp-core` resolves `@somnia-chain/markets-sdk` 0.31.0, vitest 2.1.9, Node v22.22.0
-- Network: none (mock exchange)
+- Network: none at test time (mock exchange); the one-command wrapper needs network access to clone and install upstream
 - Wallet: none
 - Date: 2026-10-21 (UTC)
