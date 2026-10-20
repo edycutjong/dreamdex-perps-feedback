@@ -22,7 +22,7 @@ So either the three docs passages are out of date, or the allowlist is missing 6
 
 ## Evidence
 - `evidence/006-run1.json`, `evidence/006-run2.json`: two fresh-process runs, byte-identical (`allowedOnChain`, `docsSayNo`, `docsNoButAllowed`, `campaign`, one row per market with `chainVoucherMarketAllowed` and `voucherLeverageCapX`).
-- `evidence/006-docs-excerpts.txt`: the three docs passages above as served on 2026-10-21 (hydrated page text, headless Chromium).
+- `evidence/docs-excerpts-2026-10-21.txt`: the three docs passages above as served on 2026-10-21 (hydrated page text, headless Chromium).
 - All numbers come from on-chain reads (`getPerpLeverage` reads `MarginBank.isVoucherMarketAllowed(pool)` and `getVoucherLeverageCap()`). No transaction is involved. This report does not place a voucher-funded order, so it does not show which of the two the pool enforces.
 
 ## Environment
