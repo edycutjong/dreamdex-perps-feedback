@@ -44,10 +44,27 @@ index 634eedd..04a54d0 100644
  }
  
 diff --git a/strategies/perp-maker/src/index.ts b/strategies/perp-maker/src/index.ts
-index 56787b6..136eeac 100644
+index 56787b6..39fc387 100644
 --- a/strategies/perp-maker/src/index.ts
 +++ b/strategies/perp-maker/src/index.ts
-@@ -126,11 +126,17 @@ async function main(): Promise<void> {
+@@ -52,6 +52,8 @@ const MAX_POSITION = envNum("PERP_MM_MAX_POSITION_USDSO", 100);
+ const SKEW_BPS = envNum("PERP_MM_INVENTORY_SKEW_BPS", 10);
+ const REQUOTE_BPS = envNum("PERP_MM_REQUOTE_TRIGGER_BPS", 8);
+ const REFRESH_MS = envNum("PERP_MM_REFRESH_MS", 15_000);
++/** Cycles a quote whose cancel failed is retried before the bot stops waiting for it. */
++const MAX_CANCEL_TRIES = 3;
+ 
+ interface Quote {
+   bid?: bigint;
+@@ -104,6 +106,7 @@ async function main(): Promise<void> {
+   }
+ 
+   let resting: Quote = { atMark: 0 };
++  const cancelTries = new Map<bigint, number>();
+ 
+   while (!stopped()) {
+     // Same snapshot trap as everywhere else: the row has to be re-read, or the
+@@ -126,11 +129,23 @@ async function main(): Promise<void> {
        continue;
      }
  
@@ -56,8 +73,14 @@ index 56787b6..136eeac 100644
 -        if (id !== undefined) await cancelQuietly(ctx, market, id);
 +    if (resting.bid !== undefined || resting.ask !== undefined) {
 +      const stuck: Quote = { atMark: 0 };
-+      if (resting.bid !== undefined && !(await cancelQuietly(ctx, market, resting.bid))) stuck.bid = resting.bid;
-+      if (resting.ask !== undefined && !(await cancelQuietly(ctx, market, resting.ask))) stuck.ask = resting.ask;
++      for (const [leg, id] of [["bid", resting.bid], ["ask", resting.ask]] as const) {
++        if (id === undefined || (await cancelQuietly(ctx, market, id))) continue;
++        const tries = (cancelTries.get(id) ?? 0) + 1;
++        cancelTries.set(id, tries);
++        // Bounded: a cancel that keeps failing for a reason nobody recognises must not stop the bot quoting for good.
++        if (tries >= MAX_CANCEL_TRIES) console.log(`giving up on cancelling ${leg} order ${id} after ${tries} tries, check it in the app`);
++        else stuck[leg] = id;
++      }
 +      resting = stuck;
 +      if (stuck.bid !== undefined || stuck.ask !== undefined) {
 +        // A quote that could not be cancelled may still be live: quoting again now would stack a second pair on it.

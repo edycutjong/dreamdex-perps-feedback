@@ -131,7 +131,13 @@ export function makeMock(extraConfig: Record<string, unknown> = {}): Mock {
         m.placed.push({ ...o, orderId: id });
         if (o.orderType !== 2) m.live.add(id);
         m.peak = Math.max(m.peak, m.live.size);
-        return { hash: "0x" + "ab".repeat(32), receipt: { status: "success" }, orderId: id, fills: [] };
+        return {
+          hash: "0x" + "ab".repeat(32),
+          receipt: { status: "success" },
+          orderId: id,
+          // An IOC (type 2) fills completely at the mock book; resting orders fill nothing.
+          fills: o.orderType === 2 ? [{ quantityFilled: o.quantity }] : [],
+        };
       },
       cancelOrder: async ({ orderId }: { orderId: bigint }) => {
         m.hooks.cancelOrder?.(orderId);

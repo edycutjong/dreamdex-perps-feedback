@@ -1,0 +1,19 @@
+diff --git a/strategies/perp-starter/src/index.ts b/strategies/perp-starter/src/index.ts
+index 79ea482..56ce930 100644
+--- a/strategies/perp-starter/src/index.ts
++++ b/strategies/perp-starter/src/index.ts
+@@ -171,10 +171,10 @@ async function main(): Promise<void> {
+   // The row lags by tens of minutes, so triggers derived from it sit at prices
+   // the pool never had.
+   const mark = (await liveMark(ctx.exchange, market)) ?? markOf(market.info);
+-  const up = BigInt(Math.round(mark * (1 + TAKE_PROFIT_PCT / 100) * 1e18));
+-  const down = BigInt(Math.round(mark * (1 - STOP_LOSS_PCT / 100) * 1e18));
+-  const takeProfit = SIDE === "long" ? up : down;
+-  const stopLoss = SIDE === "long" ? down : up;
++  // Each leg uses its own percentage: a long takes profit above the mark and stops out below it, a short the reverse.
++  const dir = SIDE === "long" ? 1 : -1;
++  const takeProfit = BigInt(Math.round(mark * (1 + (dir * TAKE_PROFIT_PCT) / 100) * 1e18));
++  const stopLoss = BigInt(Math.round(mark * (1 - (dir * STOP_LOSS_PCT) / 100) * 1e18));
+   const px = (v: bigint) => (Number(v) / 1e18).toFixed(2);
+ 
+   let bracket: { sent: boolean };

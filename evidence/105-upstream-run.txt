@@ -1,0 +1,30 @@
+== pristine upstream @ 25798660bbe4674a6f83a960b202852896e2fed4
+
+ RUN  v2.1.9 <tmp>/bot-kit/packages/perp-core
+
+ ✓ tests/units.test.ts (19 tests) 3ms
+ ❯ tests/105-starter-short-swaps-tp-sl-percentages.test.ts (1 test | 1 failed) 208ms
+   × perp-starter opening a short with PERP_TAKE_PROFIT_PCT=2 and PERP_STOP_LOSS_PCT=1 > arms the take-profit 2% below the mark and the stop-loss 1% above it 207ms
+     → expected 98999.99 to be close to 98000, received difference is 999.9900000000052, but expected 0.05
+ ✓ tests/trading-key.test.ts (12 tests) 27ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/105-starter-short-swaps-tp-sl-percentages.test.ts > perp-starter opening a short with PERP_TAKE_PROFIT_PCT=2 and PERP_STOP_LOSS_PCT=1 > arms the take-profit 2% below the mark and the stop-loss 1% above it
+AssertionError: expected 98999.99 to be close to 98000, received difference is 999.9900000000052, but expected 0.05
+ ❯ tests/105-starter-short-swaps-tp-sl-percentages.test.ts:35:37
+     33|     // take-profit leg (triggers at or below the mark for a short) and…
+     34|     expect(arm.triggerOperator).toBe(1);
+     35|     expect(price(arm.triggerPrice)).toBeCloseTo(MARK * 0.98, 1); // 98…
+       |                                     ^
+     36|     expect(price(arm.pair.triggerPrice)).toBeCloseTo(MARK * 1.01, 1); …
+     37|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 31 passed (32)
+   Start at  06:27:26
+   Duration  447ms (transform 121ms, setup 0ms, collect 501ms, tests 238ms, environment 0ms, prepare 138ms)
+
+exit 1

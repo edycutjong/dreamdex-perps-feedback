@@ -42,4 +42,27 @@ describe("perp-maker when a cancel fails for a reason other than 'order already 
     // And after a clean stop nothing of the bot's is left on the book.
     expect([...m.live]).toEqual([]);
   });
+
+  it("gives up on an order whose cancel keeps failing, so the bot is never stuck not quoting", async () => {
+    const m: Mock = makeMock();
+    h.ctx = { exchange: m.exchange, config: m.config, canTrade: true };
+    h.stopped = false;
+    // Every cancel fails with a message nothing recognises (a revert with no reason).
+    m.hooks.cancelOrder = () => {
+      throw new Error("execution reverted");
+    };
+    let sleeps = 0;
+    h.onSleep = () => {
+      sleeps += 1;
+      if (sleeps === 1) m.mark = MARK * 1.005;
+      if (sleeps >= 5) h.stopped = true;
+    };
+
+    const code = await runStrategy(MAKER, { DRY_RUN: "false", PRIVATE_KEY: m.config.privateKey });
+
+    expect(code).toBe(0);
+    // Upstream quotes a new pair at once (4 post-only orders by cycle 2); the patch retries the cancel for 3 cycles,
+    // then gives up on those two orders and quotes again, so both versions end with at least 4.
+    expect(m.placed.filter((o) => o.orderType === 3).length).toBeGreaterThanOrEqual(4);
+  });
 });

@@ -1,10 +1,15 @@
 diff --git a/strategies/perp-guard/src/index.ts b/strategies/perp-guard/src/index.ts
-index 3a94cc4..eb06379 100644
+index 3a94cc4..924b2b2 100644
 --- a/strategies/perp-guard/src/index.ts
 +++ b/strategies/perp-guard/src/index.ts
-@@ -125,42 +125,48 @@ async function main(): Promise<void> {
+@@ -124,43 +124,53 @@ async function main(): Promise<void> {
+     }
    }
  
++  // Resolve the watch list once before looping, so a bad PERP_SYMBOL still stops the guard at startup
++  // instead of being retried forever by the loop below.
++  if (me) await watchList(ctx, me);
++
    while (!stopped()) {
 -    const markets = await watchList(ctx, me);
 -    if (markets.length === 0) {
@@ -19,6 +24,22 @@ index 3a94cc4..eb06379 100644
 +        await sleep(POLL_MS, stopped);
 +        continue;
 +      }
++
++      for (const market of markets) {
++        if (!me) break;
++        const snapshot = await marginSnapshot(ctx.exchange, market, me);
++        const ratio = healthRatio(snapshot);
++        const position = await positionIn(ctx.exchange, market);
++        if (!position) continue;
++
++        const notional = position.contracts * ((await liveMark(ctx.exchange, market)) ?? markOf(market.info));
++        const label = Number.isFinite(ratio) ? `${ratio.toFixed(3)}x maintenance` : "no maintenance requirement";
++        console.log(
++          `${market.display}: ${position.side} ${position.contracts} (${notional.toFixed(2)} USDso) | health ${label} | ` +
++            `status ${snapshot.status}`,
++        );
++
++        if (!Number.isFinite(ratio)) continue;
  
 -    for (const market of markets) {
 -      if (!me) break;
@@ -26,29 +47,16 @@ index 3a94cc4..eb06379 100644
 -      const ratio = healthRatio(snapshot);
 -      const position = await positionIn(ctx.exchange, market);
 -      if (!position) continue;
-+      for (const market of markets) {
-+        if (!me) break;
-+        const snapshot = await marginSnapshot(ctx.exchange, market, me);
-+        const ratio = healthRatio(snapshot);
-+        const position = await positionIn(ctx.exchange, market);
-+        if (!position) continue;
- 
+-
 -      const notional = position.contracts * ((await liveMark(ctx.exchange, market)) ?? markOf(market.info));
 -      const label = Number.isFinite(ratio) ? `${ratio.toFixed(3)}x maintenance` : "no maintenance requirement";
 -      console.log(
 -        `${market.display}: ${position.side} ${position.contracts} (${notional.toFixed(2)} USDso) | health ${label} | ` +
 -          `status ${snapshot.status}`,
 -      );
-+        const notional = position.contracts * ((await liveMark(ctx.exchange, market)) ?? markOf(market.info));
-+        const label = Number.isFinite(ratio) ? `${ratio.toFixed(3)}x maintenance` : "no maintenance requirement";
-+        console.log(
-+          `${market.display}: ${position.side} ${position.contracts} (${notional.toFixed(2)} USDso) | health ${label} | ` +
-+            `status ${snapshot.status}`,
-+        );
- 
+-
 -      if (!Number.isFinite(ratio)) continue;
-+        if (!Number.isFinite(ratio)) continue;
- 
+-
 -      // One market refusing (a key not yet linked there, a book with nothing to
 -      // cross) must not stop the guard watching the rest.
 -      try {

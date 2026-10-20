@@ -19,11 +19,12 @@ describe("perp-guard when one position read fails", () => {
     h.ctx = { exchange: m.exchange, config: m.config, canTrade: true };
     h.stopped = false;
 
-    // The first position read fails (an indexer hiccup); every later read works.
+    // The second position read fails (a transport error, mocked); every other read works.
+    // On upstream that read is the one in `positionIn`, inside the first cycle; with the patch it is the first read of a cycle.
     let reads = 0;
     m.hooks.fetchPositions = () => {
       reads += 1;
-      if (reads === 1) throw new Error("indexer request failed: 503 Service Unavailable");
+      if (reads === 2) throw new Error("request failed: 503 Service Unavailable");
     };
     let sleeps = 0;
     h.onSleep = () => {
@@ -33,7 +34,7 @@ describe("perp-guard when one position read fails", () => {
 
     const code = await runStrategy(GUARD, { DRY_RUN: "false", PRIVATE_KEY: m.config.privateKey });
 
-    expect(code).toBe(0); // upstream: the process exits with code 1 on that first failed read
+    expect(code).toBe(0); // upstream: the process exits with code 1 on that failed read
     // The guard got to the position and sold it: a market IOC (type 2), isBid false, the whole 0.01 BTC.
     const closes = m.placed.filter((o) => o.orderType === 2);
     expect(closes).toHaveLength(1);
