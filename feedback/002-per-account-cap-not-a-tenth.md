@@ -1,4 +1,4 @@
-# Per-account position cap is "a tenth" of the open interest cap on 10 of 21 markets against the docs table, and on 1 of 21 against the pool's own `maxOpenInterest`
+# Per-account position cap is not "a tenth" of the market's open interest cap on most markets: 1 of 21 against the pool's `maxOpenInterest`, 10 of 21 against the docs table
 Severity: normal
 Area: docs
 
@@ -23,11 +23,11 @@ A trader or bot that sizes against "a tenth" gets the wrong limit on 20 of 21 ma
 
 ## Evidence
 - `evidence/002-run1.json`, `evidence/002-run2.json`: two fresh-process runs, byte-identical; `byShare` (docs cap) and `byChainShare` (pool `maxOpenInterest`) list the markets for each ratio; `marketsAtOneTenth` is 10 and `marketsAtOneTenthOfChainCap` is 1.
-- `evidence/docs-excerpts-2026-10-21.txt`: the docs "Markets" table as served on 2026-10-21, the same values as `repro/lib/docs-table.mjs`.
+- `evidence/docs-excerpts-2026-10-20.txt`: the docs "Markets" table, the paragraph under it and the developer-page pitfall (both quotes above) as served on 2026-10-20 (UTC); the table has the same values as `repro/lib/docs-table.mjs`.
 - Source of the numbers: `getPerpRiskParams` on each pool (on-chain), no transaction involved. The documented caps are the ones also used in report 001.
 
 ## Environment
 - `@somnia-chain/markets-sdk` 0.32.1, Node v22.22.0
 - Somnia Hideki testnet (Tokyo, chain 50383), read-only
 - Wallet: none (read-only calls)
-- Date: 2026-10-20 (ratio against `maxOpenInterest` added 2026-10-21)
+- Date: 2026-10-20 (UTC)
