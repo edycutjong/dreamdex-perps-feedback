@@ -1,6 +1,11 @@
 {
   "sdk": "0.32.1",
   "hasOperatorPermissionsRegistry": false,
+  "keyInBundledSets": {
+    "SOMNIA_HIDEKI_TESTNET_ADDRESSES": false,
+    "SOMNIA_TESTNET_ADDRESSES": false,
+    "SOMNIA_MAINNET_ADDRESSES": false
+  },
   "stopRegistryOnMarketRow": "0x85a0879d19777c343eb317a890d5058ab92b8f5d",
   "operatorRegistryPassed": null,
   "result": {
