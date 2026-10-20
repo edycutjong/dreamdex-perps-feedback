@@ -3,8 +3,8 @@
  RUN  v2.1.9 <tmp>/bot-kit/packages/perp-core
 
  ✓ tests/units.test.ts (19 tests) 3ms
- ❯ tests/101-starter-existing-position-side.test.ts (1 test | 1 failed) 208ms
-   × perp-starter with a position that is already open > protects an existing SHORT with buy-to-close stops below and above the mark, not a long's 208ms
+ ❯ tests/101-starter-existing-position-side.test.ts (1 test | 1 failed) 207ms
+   × perp-starter with a position that is already open > protects an existing SHORT with buy-to-close stops below and above the mark, not a long's 206ms
      → expected false to be true // Object.is equality
  ✓ tests/trading-key.test.ts (12 tests) 26ms
 
@@ -31,7 +31,7 @@ AssertionError: expected false to be true // Object.is equality
 
  Test Files  1 failed | 2 passed (3)
       Tests  1 failed | 31 passed (32)
-   Start at  06:12:09
-   Duration  455ms (transform 121ms, setup 0ms, collect 504ms, tests 238ms, environment 0ms, prepare 115ms)
+   Start at  06:30:03
+   Duration  442ms (transform 113ms, setup 0ms, collect 503ms, tests 236ms, environment 0ms, prepare 139ms)
 
 exit 1

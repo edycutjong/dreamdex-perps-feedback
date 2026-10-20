@@ -3,10 +3,10 @@
  RUN  v2.1.9 <tmp>/bot-kit/packages/perp-core
 
  ✓ tests/units.test.ts (19 tests) 4ms
- ❯ tests/103-cancel-quietly-swallows-failures.test.ts (1 test | 1 failed) 211ms
-   × perp-maker when a cancel fails for a reason other than 'order already gone' > does not quote a second pair over the first, and does not lose track of it 211ms
+ ✓ tests/trading-key.test.ts (12 tests) 27ms
+ ❯ tests/103-cancel-quietly-swallows-failures.test.ts (2 tests | 1 failed) 215ms
+   × perp-maker when a cancel fails for a reason other than 'order already gone' > does not quote a second pair over the first, and does not lose track of it 213ms
      → expected 4 to be less than or equal to 2
- ✓ tests/trading-key.test.ts (12 tests) 30ms
 
 ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
 
@@ -23,8 +23,8 @@ AssertionError: expected 4 to be less than or equal to 2
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
 
  Test Files  1 failed | 2 passed (3)
-      Tests  1 failed | 31 passed (32)
-   Start at  06:15:40
-   Duration  476ms (transform 113ms, setup 0ms, collect 503ms, tests 245ms, environment 0ms, prepare 150ms)
+      Tests  1 failed | 32 passed (33)
+   Start at  06:30:38
+   Duration  452ms (transform 92ms, setup 0ms, collect 490ms, tests 246ms, environment 0ms, prepare 137ms)
 
 exit 1
