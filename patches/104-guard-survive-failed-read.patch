@@ -1,0 +1,83 @@
+diff --git a/strategies/perp-guard/src/index.ts b/strategies/perp-guard/src/index.ts
+index 3a94cc4..eb06379 100644
+--- a/strategies/perp-guard/src/index.ts
++++ b/strategies/perp-guard/src/index.ts
+@@ -125,42 +125,48 @@ async function main(): Promise<void> {
+   }
+ 
+   while (!stopped()) {
+-    const markets = await watchList(ctx, me);
+-    if (markets.length === 0) {
+-      console.log("no open positions to guard");
+-      await sleep(POLL_MS, stopped);
+-      continue;
+-    }
++    try {
++      const markets = await watchList(ctx, me);
++      if (markets.length === 0) {
++        console.log("no open positions to guard");
++        await sleep(POLL_MS, stopped);
++        continue;
++      }
+ 
+-    for (const market of markets) {
+-      if (!me) break;
+-      const snapshot = await marginSnapshot(ctx.exchange, market, me);
+-      const ratio = healthRatio(snapshot);
+-      const position = await positionIn(ctx.exchange, market);
+-      if (!position) continue;
++      for (const market of markets) {
++        if (!me) break;
++        const snapshot = await marginSnapshot(ctx.exchange, market, me);
++        const ratio = healthRatio(snapshot);
++        const position = await positionIn(ctx.exchange, market);
++        if (!position) continue;
+ 
+-      const notional = position.contracts * ((await liveMark(ctx.exchange, market)) ?? markOf(market.info));
+-      const label = Number.isFinite(ratio) ? `${ratio.toFixed(3)}x maintenance` : "no maintenance requirement";
+-      console.log(
+-        `${market.display}: ${position.side} ${position.contracts} (${notional.toFixed(2)} USDso) | health ${label} | ` +
+-          `status ${snapshot.status}`,
+-      );
++        const notional = position.contracts * ((await liveMark(ctx.exchange, market)) ?? markOf(market.info));
++        const label = Number.isFinite(ratio) ? `${ratio.toFixed(3)}x maintenance` : "no maintenance requirement";
++        console.log(
++          `${market.display}: ${position.side} ${position.contracts} (${notional.toFixed(2)} USDso) | health ${label} | ` +
++            `status ${snapshot.status}`,
++        );
+ 
+-      if (!Number.isFinite(ratio)) continue;
++        if (!Number.isFinite(ratio)) continue;
+ 
+-      // One market refusing (a key not yet linked there, a book with nothing to
+-      // cross) must not stop the guard watching the rest.
+-      try {
+-        if (ratio < FLATTEN_BELOW) {
+-          console.log(`health ${ratio.toFixed(3)} is below the flatten threshold, closing the position`);
+-          await closePosition(ctx, market, me, { label: "guard flatten" });
+-        } else if (ratio < REDUCE_BELOW) {
+-          console.log(`health ${ratio.toFixed(3)} is below the reduce threshold, closing ${REDUCE_PCT}%`);
+-          await closePosition(ctx, market, me, { fraction: REDUCE_PCT / 100, label: "guard reduce" });
++        // One market refusing (a key not yet linked there, a book with nothing to
++        // cross) must not stop the guard watching the rest.
++        try {
++          if (ratio < FLATTEN_BELOW) {
++            console.log(`health ${ratio.toFixed(3)} is below the flatten threshold, closing the position`);
++            await closePosition(ctx, market, me, { label: "guard flatten" });
++          } else if (ratio < REDUCE_BELOW) {
++            console.log(`health ${ratio.toFixed(3)} is below the reduce threshold, closing ${REDUCE_PCT}%`);
++            await closePosition(ctx, market, me, { fraction: REDUCE_PCT / 100, label: "guard reduce" });
++          }
++        } catch (err) {
++          console.log(`could not act on ${market.display}: ${err instanceof Error ? err.message : String(err)}`);
+         }
+-      } catch (err) {
+-        console.log(`could not act on ${market.display}: ${err instanceof Error ? err.message : String(err)}`);
+       }
++    } catch (err) {
++      // A failed read (an indexer or RPC error) must not end the guard: a process that has exited
++      // watches nothing. Log it and look again next poll.
++      console.log(`guard cycle failed, will retry: ${err instanceof Error ? err.message : String(err)}`);
+     }
+ 
+     await sleep(POLL_MS, stopped);

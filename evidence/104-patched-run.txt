@@ -1,0 +1,14 @@
+== patched with 104-guard-survive-failed-read.patch
+
+ RUN  v2.1.9 <tmp>/bot-kit/packages/perp-core
+
+ ✓ tests/units.test.ts (19 tests) 4ms
+ ✓ tests/104-guard-exits-on-failed-read.test.ts (1 test) 228ms
+ ✓ tests/trading-key.test.ts (12 tests) 26ms
+
+ Test Files  3 passed (3)
+      Tests  32 passed (32)
+   Start at  06:17:33
+   Duration  489ms (transform 105ms, setup 0ms, collect 519ms, tests 258ms, environment 0ms, prepare 144ms)
+
+exit 0
