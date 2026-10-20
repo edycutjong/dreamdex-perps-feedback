@@ -20,6 +20,10 @@
   "markBelowIndexRatePositive": 8831,
   "markAboveIndex": 669,
   "markAboveIndexRateNegative": 0,
+  "markBelowByMoreThanDampenerRatePositive": 4864,
+  "markBelowByMoreThanDampener": 5038,
+  "largestGapBelowIndexWithPositiveRatePct": 0.140137,
+  "smallestGapBelowIndexWithNegativeRatePct": 0.013779,
   "examples": [
     {
       "market": "BTC",
