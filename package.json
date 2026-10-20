@@ -1,0 +1,13 @@
+{
+  "name": "dreamdex-perps-feedback",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Reproducible feedback reports for the dreamDEX perps API, SDK and docs (Somnia Hideki testnet)",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@somnia-chain/markets-sdk": "0.32.1",
+    "viem": "^2.21.0"
+  }
+}
