@@ -1,0 +1,36 @@
+{
+  "sdk": "0.32.1",
+  "liquidationEngine": "0xA66d3C24Ad4a389d863846905D8173e1017e9F4D",
+  "bidderCount": "1",
+  "bidders": [
+    "0xAF327764345c2f54C1F2bc3322D28E4f633793b9"
+  ],
+  "takeoversUpToCutoff": 3,
+  "takeoverBiddersAreRegistered": true,
+  "takeovers": [
+    {
+      "utc": "2026-10-20T14:10:40.000Z",
+      "market": "ETH",
+      "size": "-32429000000000000000",
+      "price": "2510197536734438743591",
+      "bidder": "0xaf327764345c2f54c1f2bc3322d28e4f633793b9",
+      "txHash": "0xeed95612916a94094a3791bcae20eccf0f729d606c70094394704eeaf99ab431"
+    },
+    {
+      "utc": "2026-10-20T14:14:08.000Z",
+      "market": "SOL",
+      "size": "-156920000000",
+      "price": "110060603010221198940",
+      "bidder": "0xaf327764345c2f54c1f2bc3322d28e4f633793b9",
+      "txHash": "0x40099b2c64df594961a4b113da8132795efd58cc15e67a9dced866ae4e8b3300"
+    },
+    {
+      "utc": "2026-10-20T14:14:08.000Z",
+      "market": "SOL",
+      "size": "-227770000000",
+      "price": "110047200427667631389",
+      "bidder": "0xaf327764345c2f54c1f2bc3322d28e4f633793b9",
+      "txHash": "0x170891a3829d9362c44805fbbcf3ea8b02747c7c129a1cf57eeb1d00927f855e"
+    }
+  ]
+}
