@@ -1,4 +1,4 @@
-# Live docs text, captured 2026-10-20 17:11-17:14 UTC (2026-10-21 00:11-00:14 UTC+7) with headless Chromium (desktop UA), hydrated page body
+# Live docs text, captured 2026-10-20 UTC (pages fetched 17:11-17:14 UTC; excerpts assembled by 17:45 UTC) with headless Chromium (desktop UA), hydrated page body
 
 ## https://app.testnet.dreamdex.io/docs/trading/perps-testnet (fees table)
 Maker fee	0
