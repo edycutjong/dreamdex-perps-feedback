@@ -1,0 +1,29 @@
+{
+  "sdk": "0.32.1",
+  "statements": [
+    {
+      "file": "dist/funding.d.ts",
+      "line": 109,
+      "text": "*  The contract's catch-up horizon is ONE interval, so a settlement charges at most *  `rate / n` however long the gap was, and the excess is forgiven rather than deferred. *  Read `FundingRateUpdate.intervalsAccrued` for what a given settlement actually"
+    },
+    {
+      "file": "dist/store.d.ts",
+      "line": 245,
+      "text": "/** UNCLAMPED interval span, as emitted. Accrual is capped at n = window / interval. */ intervalsSettled: string; /** Params as last known for the market; null before the first indexed funding row. */"
+    },
+    {
+      "file": "dist/eventsAbi.js",
+      "line": 195,
+      "text": "// UNCLAMPED interval span; accrual is capped at n = window / interval. { name: \"intervalsSettled\", type: \"uint64\", indexed: false }, // 0 is a SENTINEL for a stale/reverting mark feed, not a price."
+    },
+    {
+      "file": "docs/PERPS.md",
+      "line": 508,
+      "text": "over several intervals, multiply that by the row's `intervalsAccrued`, since one settlement can charge more than one interval's worth. Both figures ride on `info.perp`. `markPrice` is omitted rather than reported as 0 when the feed is stale."
+    }
+  ],
+  "settlementsScanned": 9721,
+  "lateSettlements": 27,
+  "maxIntervalsSettledInOneRow": 58,
+  "rowsAccruingMoreThanOneInterval": 0
+}
