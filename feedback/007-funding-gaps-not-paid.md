@@ -1,4 +1,4 @@
-# Funding docs say it is paid every hour, but 27 late settlements each charged one hour and skipped the rest: 352 hours of funding never accrued
+# Funding docs say it is paid every hour, but 27 late settlements each charged one hour and skipped the rest: 352 hourly intervals never charged
 Severity: normal
 Area: docs
 
@@ -16,7 +16,7 @@ App docs page `/docs/trading/perps-testnet/funding`: "Settlement | Every hour", 
 So a settlement that runs late should still charge every hour since the previous one. If it does not, the docs should say so.
 
 ## Actual
-The history holds 9,721 settlements up to the cut-off. 27 of them came late, covering 2 to 58 hourly intervals (`intervalsSettled`). Every one of the 27 charged one interval (`intervalsAccrued: 1`). No settlement in the history charged more than one (`rowsAccruingMoreThanOneInterval: 0`). In total, 352 hours of funding were never accrued (`hoursNotAccrued`).
+The history holds 9,721 settlements up to the cut-off. 27 of them came late, covering 2 to 58 hourly intervals (`intervalsSettled`). Every one of the 27 charged one interval (`intervalsAccrued: 1`). No settlement in the history charged more than one (`rowsAccruingMoreThanOneInterval: 0`). In total, 352 hourly intervals were not accrued (`hoursNotAccrued`: 352).
 The chain shows the same thing without the indexer's `intervalsAccrued` field:
 - On all 27, the `cumulativeFundingPerUnit` step is exactly one interval at the emitted rate (`stepOfOneInterval: 27`). For ADA (17 intervals) and ETH (47) the late settlement is the market's first indexed one, so its step is measured from 0.
 - All 27 transaction receipts carry a `FundingUpdated` log from the market's pool with the same `intervalsSettled` (`receiptsMatchingIndexer: 27`). The receipts confirm the length of each gap; the cumulative step confirms what was charged.
@@ -30,7 +30,7 @@ Examples:
 
 Hours not accrued, by market: SOL 74, ETH 48, ADA 28, TAO 17, NEAR 17, WLD 16, XRP 16, AVAX 15, SUI 15, LIT 14, VVV 14, 1000PEPE 14, HYPE 14, ZRO 13, LINK 11, BTC 9, DOGE 8, XLM 4, BNB 4, ZEC 1. PUMP has none.
 The SDK documents this as the contract's rule. `dist/funding.d.ts:109-110` says: "The contract's catch-up horizon is ONE interval, so a settlement charges at most `rate / n` however long the gap was, and the excess is forgiven rather than deferred." The app docs promise "the same as paying every hour" and never say that a missed hour is forgiven. So the two sets of docs disagree.
-During each gap, the side due to receive funding got one hour's worth for an N-hour gap. For example, a position held through the 2026-10-17 gap on LIT, VVV or 1000PEPE was charged or credited one hour of funding for 15 hours.
+Positions settle against that cumulative index, so a position held through a gap was charged or credited one interval at the rate emitted at settlement, however long the gap was. For example, through the 2026-10-17 gap on LIT, VVV or 1000PEPE: one interval for 15 hours. This report does not estimate the USDso amount; that would need the premium during the gap, which is not recorded.
 
 ## Evidence
 - `evidence/007-run1.json`, `evidence/007-run2.json`: two fresh-process runs, byte-identical. Each of the 27 late settlements is listed with market, pool, timestamp, `intervalsSettled`, `intervalsAccrued`, `intervalsInCumulativeStep`, `receiptStatus`, `receiptIntervalsSettled` and `txHash`. The totals are `settlementsScanned`, `lateSettlements`, `hoursNotAccrued`, `receiptsMatchingIndexer` and `stepOfOneInterval`.
