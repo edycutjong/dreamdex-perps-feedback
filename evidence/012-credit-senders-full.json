@@ -1,0 +1,13 @@
+{
+  "creditedRows": 37521,
+  "distinctTxs": 524,
+  "oldestUtc": "2026-10-19T16:20:35.000Z",
+  "newestUtc": "2026-10-20T23:05:13.000Z",
+  "granters": [
+    "0x2acd9efda721450906bfe1bef3ede269636e42c4"
+  ],
+  "rowsBySender": {
+    "0x792182e6b2bd50deb22dc5436f7c518b34f9bd12": 37521
+  },
+  "selfClaimTxs": 0
+}

@@ -1,0 +1,26 @@
+{
+  "sdk": "0.32.1",
+  "wallet": "0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b",
+  "distributor": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+  "eligibility": {
+    "eligible": true,
+    "grantAmount": "1000000000000000000000"
+  },
+  "simulatedClaim": {
+    "shortMessage": "Execution reverted for an unknown reason.",
+    "data": "0x3e31dcc2"
+  },
+  "claimTx": {
+    "hash": "0x2fecb42aecb6c5025f1fc3241fc9d6c4ee1d2e0b7acdebfa420c06424db49bb4",
+    "status": "reverted",
+    "block": "28860755",
+    "gasUsed": "22781",
+    "costSTT": "0.000136686",
+    "logs": 0
+  },
+  "voucherAfter": {
+    "claimed": false,
+    "floor": "0",
+    "expiresAt": "0"
+  }
+}

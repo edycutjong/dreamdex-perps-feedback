@@ -18,3 +18,7 @@ export const requireKey = () => {
   if (!k) throw new Error("set PROBE_PRIVATE_KEY in the environment");
   return k;
 };
+
+// Same client with a signer, for the write-path repros.
+export const writeMarkets = () =>
+  new SomniaMarkets({ chain: hidekiTestnet, indexerUrl: INDEXER_URL, addresses: ADDRESSES, privateKey: requireKey() });
