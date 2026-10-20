@@ -1,170 +1,166 @@
 {
   "sdk": "0.32.1",
-  "marketsWithShareExactlyOneTenth": 1,
   "totalMarkets": 21,
+  "marketsAtOneTenth": 10,
   "byShare": {
-    "0.025": [
+    "1": [
+      "ZEC"
+    ],
+    "0.1": [
       "ZRO",
       "LIT",
       "VVV",
       "1000PEPE",
       "PUMP",
-      "WLD"
+      "TAO",
+      "WLD",
+      "HYPE",
+      "SOL",
+      "ETH"
     ],
-    "0.25": [
-      "ZEC"
-    ],
-    "0.1": [
-      "TAO"
-    ],
-    "0.0499": [
-      "NEAR"
-    ],
-    "0.05": [
+    "0.2": [
+      "NEAR",
       "XLM",
       "AVAX",
       "LINK",
       "SUI",
       "ADA",
       "DOGE",
-      "XRP",
-      "HYPE",
-      "SOL",
-      "ETH"
+      "XRP"
     ],
-    "0.0504": [
+    "0.202": [
       "BNB"
     ],
-    "0.2026": [
+    "0.405": [
       "BTC"
     ]
   },
   "rows": [
     {
       "market": "ZRO",
-      "maxPositionSize": "25059900000000000000000",
-      "maxOpenInterest": "1002398000000000000000000",
-      "perAccountShare": 0.025
+      "docCap": 250599.5,
+      "maxPositionSize": 25059.899999999998,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "LIT",
-      "maxPositionSize": "13889600000000000000000",
-      "maxOpenInterest": "555586400000000000000000",
-      "perAccountShare": 0.025
+      "docCap": 138896.6,
+      "maxPositionSize": 13889.6,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "VVV",
-      "maxPositionSize": "2178610000000000000000",
-      "maxOpenInterest": "87144560000000000000000",
-      "perAccountShare": 0.025
+      "docCap": 21786.14,
+      "maxPositionSize": 2178.61,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "1000PEPE",
-      "maxPositionSize": "13028500000000000000000000",
-      "maxOpenInterest": "521142400000000000000000000",
-      "perAccountShare": 0.025
+      "docCap": 130285600,
+      "maxPositionSize": 13028500,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "PUMP",
-      "maxPositionSize": "8799300000000",
-      "maxOpenInterest": "351974800000000",
-      "perAccountShare": 0.025
+      "docCap": 87993700,
+      "maxPositionSize": 8799300,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "ZEC",
-      "maxPositionSize": "42000000000",
-      "maxOpenInterest": "168000000000",
-      "perAccountShare": 0.25
+      "docCap": 420,
+      "maxPositionSize": 420,
+      "shareOfDocCap": 1
     },
     {
       "market": "TAO",
-      "maxPositionSize": "218549000000",
-      "maxOpenInterest": "2185491000000",
-      "perAccountShare": 0.1
+      "docCap": 2185.491,
+      "maxPositionSize": 218.549,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "WLD",
-      "maxPositionSize": "126400000000000000000000",
-      "maxOpenInterest": "5056000000000000000000000",
-      "perAccountShare": 0.025
+      "docCap": 1264000,
+      "maxPositionSize": 126400,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "NEAR",
-      "maxPositionSize": "50000000000000000000000000000",
-      "maxOpenInterest": "1001640000000000000000000000000",
-      "perAccountShare": 0.0499
+      "docCap": 250410,
+      "maxPositionSize": 50000,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "XLM",
-      "maxPositionSize": "5355560000000",
-      "maxOpenInterest": "107111200000000",
-      "perAccountShare": 0.05
+      "docCap": 2677780,
+      "maxPositionSize": 535556,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "AVAX",
-      "maxPositionSize": "13334400000000000000000",
-      "maxOpenInterest": "266688800000000000000000",
-      "perAccountShare": 0.05
+      "docCap": 66672.2,
+      "maxPositionSize": 13334.4,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "LINK",
-      "maxPositionSize": "8528600000000000000000",
-      "maxOpenInterest": "170574400000000000000000",
-      "perAccountShare": 0.05
+      "docCap": 42643.6,
+      "maxPositionSize": 8528.6,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "SUI",
-      "maxPositionSize": "127000000000000",
-      "maxOpenInterest": "2540036000000000",
-      "perAccountShare": 0.05
+      "docCap": 635009,
+      "maxPositionSize": 127000,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "ADA",
-      "maxPositionSize": "450934000000",
-      "maxOpenInterest": "9018712000000",
-      "perAccountShare": 0.05
+      "docCap": 2254678,
+      "maxPositionSize": 450934,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "BNB",
-      "maxPositionSize": "140000000000000000000",
-      "maxOpenInterest": "2775900000000000000000",
-      "perAccountShare": 0.0504
+      "docCap": 693.975,
+      "maxPositionSize": 140,
+      "shareOfDocCap": 0.202
     },
     {
       "market": "DOGE",
-      "maxPositionSize": "112270000000000",
-      "maxOpenInterest": "2245436000000000",
-      "perAccountShare": 0.05
+      "docCap": 5613590,
+      "maxPositionSize": 1122700,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "XRP",
-      "maxPositionSize": "68926400000",
-      "maxOpenInterest": "1378528000000",
-      "perAccountShare": 0.05
+      "docCap": 344632,
+      "maxPositionSize": 68926.4,
+      "shareOfDocCap": 0.2
     },
     {
       "market": "HYPE",
-      "maxPositionSize": "2381270000",
-      "maxOpenInterest": "47625440000",
-      "perAccountShare": 0.05
+      "docCap": 23812.72,
+      "maxPositionSize": 2381.27,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "SOL",
-      "maxPositionSize": "4765440000000",
-      "maxOpenInterest": "95308880000000",
-      "perAccountShare": 0.05
+      "docCap": 47654.44,
+      "maxPositionSize": 4765.44,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "ETH",
-      "maxPositionSize": "399561200000000000000",
-      "maxOpenInterest": "7991225000000000000000",
-      "perAccountShare": 0.05
+      "docCap": 3995.6125,
+      "maxPositionSize": 399.5612,
+      "shareOfDocCap": 0.1
     },
     {
       "market": "BTC",
-      "maxPositionSize": "10000000000",
-      "maxOpenInterest": "49363090000",
-      "perAccountShare": 0.2026
+      "docCap": 246.81545,
+      "maxPositionSize": 100,
+      "shareOfDocCap": 0.405
     }
   ]
 }

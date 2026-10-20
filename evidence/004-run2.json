@@ -1,6 +1,10 @@
 {
   "sdk": "0.32.1",
   "out": {
+    "noWsConfigured": {
+      "name": "NotConfiguredError",
+      "message": "@somnia-chain/markets-sdk: this operation needs chain access — needs wsRpcUrl in createClient (or a chain whose rpcUrls carry a webSocket endpoint)"
+    },
     "wsRefused": {
       "name": "RpcError",
       "message": "@somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed",

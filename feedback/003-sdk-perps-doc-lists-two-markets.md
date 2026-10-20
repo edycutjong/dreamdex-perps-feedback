@@ -21,5 +21,5 @@ A developer who reads only the SDK docs concludes that two markets exist, and wo
 ## Environment
 - `@somnia-chain/markets-sdk` 0.32.1, Node v22.22.0
 - Somnia Hideki testnet (Tokyo, chain 50383), read-only
-- Wallet: none needed (probe wallet 0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b not used)
+- Wallet: none (read-only calls)
 - Date: 2026-10-20

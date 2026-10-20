@@ -1,9 +1,6 @@
-// Docs "Open interest cap" column vs the on-chain maxOpenInterest the pool enforces (getPerpRiskParams).
+// Docs "Open interest cap" column vs live open interest and the on-chain maxOpenInterest (getPerpRiskParams).
 import { markets, show } from "./lib/client.mjs";
-// Copied from https://app.testnet.dreamdex.io/docs/trading/perps-testnet ("Markets" table, Open interest cap column)
-const DOC = { BTC: 246.81545, ETH: 3995.6125, HYPE: 23812.72, SOL: 47654.44, XRP: 344632, ADA: 2254678, AVAX: 66672.2,
-  BNB: 693.975, DOGE: 5613590, LINK: 42643.6, NEAR: 250410, SUI: 635009, XLM: 2677780, "1000PEPE": 130285600, LIT: 138896.6,
-  PUMP: 87993700, TAO: 2185.491, VVV: 21786.14, WLD: 1264000, ZEC: 420, ZRO: 250599.5 };
+import { DOC_OI_CAP as DOC } from "./lib/docs-table.mjs";
 const m = markets();
 const rows = [];
 for (const p of await m.client.listPerpMarkets()) {

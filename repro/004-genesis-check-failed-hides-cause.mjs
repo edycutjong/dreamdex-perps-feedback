@@ -2,8 +2,8 @@
 import { SomniaMarkets, SOMNIA_HIDEKI_TESTNET_ADDRESSES } from "@somnia-chain/markets-sdk";
 import { hidekiTestnet } from "@somnia-chain/markets-sdk/chains";
 import { show } from "./lib/client.mjs";
-const withWs = (url) => ({ ...hidekiTestnet, rpcUrls: { default: { http: hidekiTestnet.rpcUrls.default.http, webSocket: [url] } } });
-const cases = { wsRefused: "ws://127.0.0.1:9/ws", wsWrongPath: "wss://api.hideki2.infra.testnet.somnia.network/not-a-ws-path" };
+const withWs = (url) => ({ ...hidekiTestnet, rpcUrls: { default: { http: hidekiTestnet.rpcUrls.default.http, ...(url && { webSocket: [url] }) } } });
+const cases = { noWsConfigured: null, wsRefused: "ws://127.0.0.1:9/ws", wsWrongPath: "wss://api.hideki2.infra.testnet.somnia.network/not-a-ws-path" };
 const out = {};
 for (const [name, url] of Object.entries(cases)) {
   const m = new SomniaMarkets({ chain: withWs(url), indexerUrl: "https://hideki-dev.smk.somnia.host/v1/graphql", addresses: SOMNIA_HIDEKI_TESTNET_ADDRESSES });
