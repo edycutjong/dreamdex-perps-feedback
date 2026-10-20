@@ -1,4 +1,4 @@
-# SDK `docs/PERPS.md` says only BTC and ETH perps are live; the testnet lists 21
+# `@somnia-chain/markets-sdk` `docs/PERPS.md` line 3 says only BTC and ETH perps are live; `listPerpMarkets()` returns 21
 Severity: normal
 Area: docs
 
