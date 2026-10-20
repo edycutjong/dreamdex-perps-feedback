@@ -14,7 +14,7 @@ The guard's header says it "watches margin health and reduces a position before 
 So a failed read in one poll should be logged and retried on the next one, not end the process.
 
 ## Actual
-Only the `closePosition` calls are inside a `try/catch` (`index.ts:153-166`). Everything that runs before them in a cycle is not: `watchList` (`index.ts:128`, which reads positions through the indexer when `PERP_SYMBOL` is blank), `marginSnapshot` (`:137`), `positionIn` (`:139`) and `liveMark`'s caller (`:142`). A throw from any of them leaves `main()`, which ends in `process.exit(1)` (`index.ts:177`). In the test that means the first failed position read, at a moment when the account is already below the flatten threshold, ends the guard before it acts.
+Only the `closePosition` calls are inside a `try/catch` (`index.ts:153-163`). Everything that runs before them in a cycle is not: `watchList` (`index.ts:128`, which reads positions through the indexer when `PERP_SYMBOL` is blank), `marginSnapshot` (`:137`), `positionIn` (`:139`) and `liveMark`'s caller (`:142`). A throw from any of them leaves `main()`, which ends in `process.exit(1)` (`index.ts:177`). In the test that means the first failed position read, at a moment when the account is already below the flatten threshold, ends the guard before it acts.
 What happens next depends on the deployment: the repo's `railway.toml` restarts on failure at most 10 times (`restartPolicyType = "ON_FAILURE"`, `restartPolicyMaxRetries = 10`), after which a guard that keeps meeting the error stays down. The restart path was not run; the test shows only the exit.
 The other strategies end the same way on a failed read; this report is limited to `perp-guard`, whose job is to be running when margin falls.
 
