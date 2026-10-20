@@ -45,6 +45,9 @@ No builder fees are charged on the account.
 
 You can add your own USDso alongside it; both sit in one balance. A voucher can be taken back 14 days after it was granted, but only while the account has no positions and no resting orders: it never forces a position closed.
 
+## https://app.testnet.dreamdex.io/docs/trading/perps-testnet/margin-and-liquidations (Liquidations)
+If closing on the book is not enough, the protocol escalates: a registered backstop bidder can take the position over, the Insurance Fund covers any remaining shortfall, and only when both are exhausted does auto-deleveraging (ADL) start. ADL reduces profitable positions on the opposite side of the same market, those with the most profit relative to their account's equity first. No backstop bidders are registered on testnet, so the later stages come in sooner.
+
 ## https://app.testnet.dreamdex.io/docs/trading/perps-testnet/funding (page body)
 Funding
 A perp has no expiry date, so funding payments keep its price close to the asset's index price instead. Funding is paid directly between longs and shorts: the protocol takes no cut.
