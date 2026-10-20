@@ -4,7 +4,7 @@ Area: SDK
 
 ## Steps to reproduce
 1. `npm install` (pins `@somnia-chain/markets-sdk` 0.32.1).
-2. Put a key with a little STT in `PROBE_PRIVATE_KEY`; the account must be flat and have never claimed (the claim reverts today, see report 012; it costs about 0.00014 STT). This report stays valid if report 012 is fixed: any custom error raised by `claim()` needs a name in `contractErrorsAbi`.
+2. Put a key with a little STT in `PROBE_PRIVATE_KEY`; the account must be flat and have never claimed (the claim reverts today, see report 012; it costs about 0.00014 STT). This report stays valid if report 012 is fixed on the docs side (self-claim closed on purpose): `claim()` raises `0x3e31dcc2` for every caller tried, including four accounts that already hold a voucher (`evidence/012-claim-call-matrix-run1.json`, `node repro/012-claim-call-matrix.mjs`, no key), so the same unnamed 4 bytes reach anyone who calls it.
 3. `node repro/013-claim-revert-undecoded.mjs`. It builds the SDK's own table of error selectors from the exported `contractErrorsAbi`, calls `trader.claimPerpVoucher({ marginBank })`, and prints every field of the error it throws.
 
 ## Expected
