@@ -1,0 +1,8 @@
+{
+  "status": 200,
+  "serverRenderedSentence": "Build, test, and deploy dreamBots for Spot and Event Contracts , in five steps.",
+  "metaDescription": "Configure, test, and deploy a dreamBot trading bot for Spot and Event Contracts on dreamDEX.",
+  "ogDescription": "A fully onchain central limit order book for spot and event contracts. Zero fees, cex-grade execution.",
+  "featureFlagDreambotPerps": "true",
+  "mentionsPerpsInSentenceOrMeta": false
+}

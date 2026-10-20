@@ -1,0 +1,6 @@
+Build a trading bot, test it safely, and go live on dreamDEX when you're ready.
+
+Set up your dreamBot
+
+Build, test, and deploy dreamBots for Spot, Event Contracts and Perps, in five steps. Your private key never touches this widget.
+
