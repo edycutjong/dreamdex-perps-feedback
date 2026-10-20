@@ -1,0 +1,15 @@
+{
+  "sdk": "0.32.1",
+  "out": {
+    "wsRefused": {
+      "name": "RpcError",
+      "message": "@somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed",
+      "cause": "Details: connect ECONNREFUSED 127.0.0.1:9"
+    },
+    "wsWrongPath": {
+      "name": "RpcError",
+      "message": "@somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed",
+      "cause": "Details: Unexpected server response: 502"
+    }
+  }
+}
