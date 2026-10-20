@@ -6,8 +6,8 @@ Area: app
 Target: the official `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, `strategies/perp-guard/src/index.ts`. The exchange is a mock; the strategy and every `perp-core` helper are the real upstream code.
 Shortcut: `node repro/104-botkit-guard-exits-on-failed-read.mjs` does steps 1-4 below from fresh clones (it needs git, npm and network access) and prints `REPRODUCED` when the new test fails on upstream and passes with the patch.
 1. `repro/botkit/run-botkit.sh 104` clones upstream at that commit into a temp directory, installs it, copies in `repro/botkit/harness.ts` and `repro/botkit/104-guard-exits-on-failed-read.test.ts`, and runs the upstream `perp-core` vitest suite plus the new test.
-2. The test runs `perp-guard`'s `main()` with `DRY_RUN=false` and a blank `PERP_SYMBOL` (the "watch what the account holds" mode) against a mock account holding a 0.01 BTC long at health 1.0x maintenance, below the default 1.15x flatten line. The second `fetchPositions` call throws `request failed: 503 Service Unavailable` (mocked); every other call works.
-3. Unmodified upstream: the test fails with `expected 1 to be +0`. The process exited with code 1 on that failed read (the position read in the first cycle), no order was sent, and the position was never reached (`evidence/104-upstream-run.txt`, 1 failed, 31 upstream tests passed).
+2. The test runs `perp-guard`'s `main()` with `DRY_RUN=false` and a blank `PERP_SYMBOL` (the "watch what the account holds" mode) against a mock account holding a 0.01 BTC long at health 1.0x maintenance, below the default 1.15x flatten line. The second `fetchPositions` call (on upstream: `positionIn`'s, after `watchList` made the first, both in the first cycle) throws `request failed: 503 Service Unavailable` (mocked); every other call works.
+3. Unmodified upstream: the test fails with `expected 1 to be +0`. The process exited with code 1 on that failed read, no order was sent, and the position was never reached (`evidence/104-upstream-run.txt`, 1 failed, 31 upstream tests passed).
 4. `repro/botkit/run-botkit.sh 104 patches/104-guard-survive-failed-read.patch`: all 32 pass. The guard logs the failure, polls again, and sends one IOC sell of the whole 1,000,000 raw units (0.01 BTC) (`evidence/104-patched-run.txt`).
 
 ## Expected
@@ -26,6 +26,6 @@ What happens next depends on the deployment: the repo's `railway.toml` restarts 
 
 ## Environment
 - `somnia-chain/dreamdex-bot-kit` @ `25798660bbe4674a6f83a960b202852896e2fed4`, `perp-core` resolves `@somnia-chain/markets-sdk` 0.31.0, vitest 2.1.9, Node v22.22.0
-- Network: none (mock exchange)
+- Network: none at test time (mock exchange); the one-command wrapper needs network access to clone and install upstream
 - Wallet: none
 - Date: 2026-10-21 (UTC)
