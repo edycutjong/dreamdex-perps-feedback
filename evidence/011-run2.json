@@ -1,0 +1,49 @@
+{
+  "sdk": "0.32.1",
+  "cutoff": 1792512000,
+  "pools": 21,
+  "fundingParametersDistinct": [
+    {
+      "fundingCalculationWindowSec": "28800",
+      "fundingSettlementIntervalSec": "3600",
+      "interestRatePerWindow": "100000000000000",
+      "maxFundingRatePerWindow": "40000000000000000",
+      "dampener": "500000000000000",
+      "emaSmoothingAlpha": "500000000000000000",
+      "maxOracleStalenessSec": "5"
+    }
+  ],
+  "settlements": 9721,
+  "rateEqualsInterestRate": 8795,
+  "rateNegative": 210,
+  "markBelowIndex": 9041,
+  "markBelowIndexRatePositive": 8831,
+  "markAboveIndex": 669,
+  "markAboveIndexRateNegative": 0,
+  "examples": [
+    {
+      "market": "BTC",
+      "utc": "2026-09-22T11:11:45.000Z",
+      "markPrice": "85857750000000000000000",
+      "indexPrice": "85893595000000000000000",
+      "fundingRate": "100000000000000",
+      "txHash": "0xa0e2a0da6b1fb5229758d53aad8009bbcf74c1b12f253d8c0ae5516ef65e6b97"
+    },
+    {
+      "market": "BTC",
+      "utc": "2026-09-22T12:11:47.000Z",
+      "markPrice": "85896650000000000000000",
+      "indexPrice": "85943205000000000000000",
+      "fundingRate": "100000000000000",
+      "txHash": "0xefaad5e9185f3393b8bcf688ccfd755b8024da0b1fffc9ac81ee7b9288898414"
+    },
+    {
+      "market": "BTC",
+      "utc": "2026-09-22T13:11:46.000Z",
+      "markPrice": "86033850000000000000000",
+      "indexPrice": "86077890000000000000000",
+      "fundingRate": "100000000000000",
+      "txHash": "0x9be9ca1c41c649eaf0fb5285f71a6afa19014ea900efbc76a8c4cf3d18cc2b63"
+    }
+  ]
+}
