@@ -1,0 +1,44 @@
+diff --git a/strategies/perp-starter/src/index.ts b/strategies/perp-starter/src/index.ts
+index 79ea482..5d87def 100644
+--- a/strategies/perp-starter/src/index.ts
++++ b/strategies/perp-starter/src/index.ts
+@@ -119,6 +119,8 @@ async function main(): Promise<void> {
+   }
+ 
+   const existing = me ? await positionIn(ctx.exchange, market) : undefined;
++  // The side of the position this run manages: the one already open, which need not be PERP_SIDE.
++  const managed: Side = existing ? existing.side : SIDE;
+   if (existing) {
+     console.log(`already ${existing.side} ${existing.contracts} ${market.info.baseSymbol}, managing it instead of opening another`);
+   } else {
+@@ -173,8 +175,8 @@ async function main(): Promise<void> {
+   const mark = (await liveMark(ctx.exchange, market)) ?? markOf(market.info);
+   const up = BigInt(Math.round(mark * (1 + TAKE_PROFIT_PCT / 100) * 1e18));
+   const down = BigInt(Math.round(mark * (1 - STOP_LOSS_PCT / 100) * 1e18));
+-  const takeProfit = SIDE === "long" ? up : down;
+-  const stopLoss = SIDE === "long" ? down : up;
++  const takeProfit = managed === "long" ? up : down;
++  const stopLoss = managed === "long" ? down : up;
+   const px = (v: bigint) => (Number(v) / 1e18).toFixed(2);
+ 
+   let bracket: { sent: boolean };
+@@ -184,7 +186,7 @@ async function main(): Promise<void> {
+   } else if (armedAlready.length > 0) {
+     bracket = { sent: false };
+   } else {
+-    bracket = await armBracket({ ctx, market, position: SIDE, takeProfit, stopLoss });
++    bracket = await armBracket({ ctx, market, position: managed, takeProfit, stopLoss });
+   }
+ 
+   if (ctx.config.dryRun || !me) {
+@@ -221,8 +223,8 @@ async function main(): Promise<void> {
+     // mark reaches either level. An un-priceable mark acts on nothing.
+     if (watchedExits && live !== undefined) {
+       const liveRaw = BigInt(Math.round(live * 1e18));
+-      const hitTakeProfit = SIDE === "long" ? liveRaw >= takeProfit : liveRaw <= takeProfit;
+-      const hitStopLoss = SIDE === "long" ? liveRaw <= stopLoss : liveRaw >= stopLoss;
++      const hitTakeProfit = managed === "long" ? liveRaw >= takeProfit : liveRaw <= takeProfit;
++      const hitStopLoss = managed === "long" ? liveRaw <= stopLoss : liveRaw >= stopLoss;
+       if (hitTakeProfit || hitStopLoss) {
+         await closePosition(ctx, fresh, me, { label: hitTakeProfit ? "take-profit" : "stop-loss" });
+         exited = true;
