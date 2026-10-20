@@ -4,7 +4,7 @@ Area: SDK
 
 ## Steps to reproduce
 1. `npm install` (pins `@somnia-chain/markets-sdk` 0.32.1).
-2. Put a key with a little STT in `PROBE_PRIVATE_KEY`; the account must be flat and have never claimed (the claim reverts today, see report 012; it costs about 0.00014 STT).
+2. Put a key with a little STT in `PROBE_PRIVATE_KEY`; the account must be flat and have never claimed (the claim reverts today, see report 012; it costs about 0.00014 STT). This report stays valid if report 012 is fixed: any custom error raised by `claim()` needs a name in `contractErrorsAbi`.
 3. `node repro/013-claim-revert-undecoded.mjs`. It builds the SDK's own table of error selectors from the exported `contractErrorsAbi`, calls `trader.claimPerpVoucher({ marginBank })`, and prints every field of the error it throws.
 
 ## Expected
@@ -12,12 +12,12 @@ SDK errors page (`/docs/developers/sdk`, "Errors", `ContractRevertError` fields)
 SDK PERPS.md "Credit vouchers": "Check eligibility before you claim. A failed claim still mines and costs gas". The caller pays for the failure, so the failure should say why.
 
 ## Actual
-The thrown error is `ContractRevertError` with `message` "claim reverted: for an unknown reason.", `errorName: null`, `reason` "for an unknown reason.", `data: "0x3e31dcc2"`, `address` the VoucherDistributor `0x2ACD9EFdA721450906bfE1bef3edE269636E42C4`, `functionName: "claim"`. The script's table over all 546 errors in `contractErrorsAbi` has no entry for `0x3e31dcc2` (`selectorKnownToSdk: false`). The selector does not appear in the public 4byte signature database either (queried 2026-10-21). The code that raises it is inside the distributor implementation `0x9657f0fd53efc01cd108d93c835bb4b517732b43` (the selector is a constant in its bytecode), so it is a distributor error, not a MarginBank one.
+The thrown error is `ContractRevertError` with `message` "claim reverted: for an unknown reason.", `errorName: null`, `reason` "for an unknown reason.", `data: "0x3e31dcc2"`, `address` the VoucherDistributor `0x2ACD9EFdA721450906bfE1bef3edE269636E42C4`, `functionName: "claim"`. The script's table over all 546 errors in `contractErrorsAbi` has no entry for `0x3e31dcc2` (`selectorKnownToSdk: false`). The selector does not appear in the public 4byte signature database either (`fourByteLookup: null` in `evidence/012-trace-run1.json`). The code that raises it is inside the distributor implementation `0x9657f0fd53efc01cd108d93c835bb4b517732b43` (`selectorInImplementationBytecode: true` and the trace in the same file), so it is a distributor error, not a MarginBank one.
 Only the raw 4 bytes are available to the caller, so the cause of the revert in report 012 cannot be read from the SDK's output.
 
 ## Evidence
 - `evidence/013-run1.json`, `evidence/013-run2.json`: two fresh-process runs, byte-identical (`eligibility`, `errorsInSdkAbi: 546`, the full `claim` error fields, `selectorKnownToSdk: false`).
-- The reverting claim transactions are listed in report 012.
+- The reverting claim transactions, the trace and the implementation address are in report 012 and `evidence/012-trace-run1.json`.
 
 ## Environment
 - `@somnia-chain/markets-sdk` 0.32.1, Node v22.22.0

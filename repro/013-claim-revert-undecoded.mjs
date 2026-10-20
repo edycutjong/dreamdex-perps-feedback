@@ -1,6 +1,6 @@
 // trader.claimPerpVoucher() on a flat, eligible account: the SDK waits for the receipt, re-simulates, and throws
 // "claim reverted: for an unknown reason." with data 0x3e31dcc2. Is that selector in the SDK's error ABI (546 errors)?
-// Needs a funded key in PROBE_PRIVATE_KEY; the reverted claim mines and costs ~0.0001 STT.
+// Needs a funded key in PROBE_PRIVATE_KEY; the reverted claim mines and costs ~0.00014 STT.
 import { keccak256, toHex } from "viem";
 import { contractErrorsAbi } from "@somnia-chain/markets-sdk";
 import { writeMarkets, show } from "./lib/client.mjs";

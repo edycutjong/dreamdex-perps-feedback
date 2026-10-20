@@ -1,0 +1,12 @@
+wallet2 0x0d6D4dd4125477f5f0E380eDE951B37a395Fa036 bal 0
+funded tx 0x144da8783d7364d17f1c7739f84bbb0930aa14cb22130fa1abe63ab6c7668b1b
+elig2 {
+  "eligible": true,
+  "grantAmount": "1000000000000000000000"
+}
+{
+  "hash": "0xa4e45ea8e8b605e1c4ef1caa381efcab70e1c26b28ae6c025e90920c8c3b32dc",
+  "status": "reverted",
+  "gasUsed": "22781",
+  "block": "28857393"
+}

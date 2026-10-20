@@ -1,6 +1,6 @@
 // Docs: "Any address can claim the 1,000 USDso perps credit once, as long as it holds no perp positions or orders" and
 // getPerpVoucherEligibility(...).eligible === true. Here: eligible is true, yet VoucherDistributor.claim() reverts.
-// Needs a funded key in PROBE_PRIVATE_KEY (STT for gas only; a reverted claim still mines and costs ~0.0002 STT).
+// Needs a funded key in PROBE_PRIVATE_KEY (STT for gas only; a reverted claim still mines and costs ~0.00014 STT).
 import { createPublicClient, createWalletClient, http, formatEther } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { hidekiTestnet } from "@somnia-chain/markets-sdk/chains";

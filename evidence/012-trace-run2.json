@@ -1,0 +1,30 @@
+{
+  "sdk": "0.32.1",
+  "distributor": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+  "campaign": {
+    "startsAt": "1790553600",
+    "endsAt": "1798477478",
+    "claimsRemaining": "423991"
+  },
+  "headBlock": "28865420",
+  "trace": {
+    "type": "CALL",
+    "to": "0x2acd9efda721450906bfe1bef3ede269636e42c4",
+    "gasUsed": 22781,
+    "error": "EXECUTION_REVERTED",
+    "output": "0x3e31dcc2",
+    "calls": [
+      {
+        "type": "DELEGATECALL",
+        "to": "0x9657f0fd53efc01cd108d93c835bb4b517732b43",
+        "gasUsed": 871,
+        "error": "EXECUTION_REVERTED",
+        "output": "0x3e31dcc2",
+        "calls": []
+      }
+    ]
+  },
+  "implementation": "0x9657f0fd53efc01cd108d93c835bb4b517732b43",
+  "selectorInImplementationBytecode": true,
+  "fourByteLookup": null
+}
