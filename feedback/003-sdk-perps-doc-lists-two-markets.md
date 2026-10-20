@@ -13,7 +13,7 @@ The list of live perp markets in the docs should match what the SDK returns, and
 
 ## Actual
 `listPerpMarkets()` returns 21 markets: ZRO, LIT, VVV, 1000PEPE, PUMP, ZEC, TAO, WLD, NEAR, XLM, AVAX, LINK, SUI, ADA, BNB, DOGE, XRP, HYPE, SOL, ETH, BTC. 19 of them are not named in the SDK page.
-A developer who reads only the SDK docs concludes that two markets exist, and would hard-code those two. The same page later says funding settles every hour "on every live pool", which treats the pool set as open-ended.
+A developer who reads only the SDK docs concludes that two markets exist, and would hard-code those two.
 
 ## Evidence
 - `evidence/003-run1.json`, `evidence/003-run2.json`: two fresh-process runs, byte-identical (`docLines` quotes line 3; `liveMarketCount` is 21).
