@@ -11,7 +11,7 @@ Area: docs
 App docs page `/docs/trading/perps-testnet`, "Markets" table: column "Paper USDso" is "No" for 1000PEPE, LIT, PUMP, VVV, ZEC and ZRO. The line above the table says: "Paper USDso shows whether the Perps Arena credit can open positions in that market."
 App docs page `/docs/trading/perps-testnet/margin-and-liquidations`, "Paper USDso": "Only some markets. You can open or increase positions only in the markets marked Yes under Paper USDso in the market table. The six newest markets are not on that list."
 Developer page `/docs/developers/perps-testnet`, "Common pitfalls": "Paper USDso blocks some markets. Increasing a position in a market outside the credit's allowlist reverts, and getMaxPerpOrderSize reports it as limitedBy: \"voucherBlocked\"."
-The SDK's type docs for `PerpLeverage.voucherMarketAllowed` (`dist/perp/margin.d.ts:436`) say: "Whether THIS market is on the voucher allowlist." An increase on a market not on the list "reverts `VoucherMarketNotAllowed`".
+The SDK's type docs for `PerpLeverage.voucherMarketAllowed` (`dist/perp/margin.d.ts:436-441`) say: "Whether THIS market is on the voucher allowlist." An increase on a market not on the list "reverts `VoucherMarketNotAllowed`".
 So `voucherMarketAllowed` should be `false` for the 6 markets the docs mark "No".
 
 ## Actual
@@ -22,11 +22,11 @@ So either the three docs passages are out of date, or the allowlist holds 6 mark
 
 ## Evidence
 - `evidence/006-run1.json`, `evidence/006-run2.json`: two fresh-process runs, byte-identical (`allowedOnChain`, `allowedOnChainDirectRead`, `marginBankGetVoucherLeverageCap`, `docsSayNo`, `docsNoButAllowed`, `campaign`, one row per market with `chainVoucherMarketAllowed`, `marginBankIsVoucherMarketAllowed` and `voucherLeverageCapX`).
-- `evidence/docs-excerpts-2026-10-21.txt`: the three docs passages above as served on 2026-10-21 (hydrated page text, headless Chromium).
+- `evidence/docs-excerpts-2026-10-20.txt`: the three docs passages above as served on 2026-10-20 (UTC) (hydrated page text, headless Chromium).
 - All numbers come from on-chain reads (`getPerpLeverage` reads `MarginBank.isVoucherMarketAllowed(pool)` and `getVoucherLeverageCap()`). No transaction is involved. This report does not place a voucher-funded order, so it does not show which of the two the pool enforces.
 
 ## Environment
 - `@somnia-chain/markets-sdk` 0.32.1, Node v22.22.0
 - Somnia Hideki testnet (Tokyo, chain 50383), read-only
 - Wallet: `0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b`, used only as the `account` argument of the reads (no voucher, no funds, nothing signed)
-- Date: 2026-10-21
+- Date: 2026-10-20 (UTC)
