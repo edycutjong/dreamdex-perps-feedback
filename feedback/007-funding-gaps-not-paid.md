@@ -7,7 +7,7 @@ Area: docs
 2. `node repro/007-funding-gaps-not-paid.mjs` (read-only, no key; takes about a minute).
 3. For all 21 markets the script pages through `client.listFundingRateHistory(pool, { from: 0, to: 1792512000, order: "asc" })` (every indexed settlement up to 2026-10-20 16:00 UTC, so two runs print the same rows). It keeps each settlement with `intervalsSettled > 1` and prints:
    - `intervalsAccrued`, the indexer's figure for what the settlement charged;
-   - `intervalsInCumulativeStep`, the same figure re-derived from event fields only: the step in `cumulativeFundingPerUnit` from the previous settlement, divided by `fundingRate x indexPrice / 8`;
+   - `intervalsInCumulativeStep`, the same figure re-derived from event fields only: the step in `cumulativeFundingPerUnit` from the previous settlement (from 0, where the index starts, for a market's first settlement), divided by `fundingRate x indexPrice / 8`;
    - `receiptIntervalsSettled`, decoded from the `FundingUpdated` log in the transaction receipt (`eth_getTransactionReceipt`).
 
 ## Expected
@@ -18,8 +18,8 @@ So a settlement that runs late should still charge every hour since the previous
 ## Actual
 The history holds 9,721 settlements up to the cut-off. 27 of them came late, covering 2 to 58 hourly intervals (`intervalsSettled`). Every one of the 27 charged one interval (`intervalsAccrued: 1`). No settlement in the history charged more than one (`rowsAccruingMoreThanOneInterval: 0`). In total, 352 hours of funding were never accrued (`hoursNotAccrued`).
 The chain shows the same thing without the indexer's `intervalsAccrued` field:
-- On 25 of the 27, the `cumulativeFundingPerUnit` step is exactly one interval at the emitted rate (`stepOfOneInterval: 25`). The other 2 (ADA 17 intervals, ETH 47) are the first indexed settlement of their market, so there is no earlier row to compare with.
-- All 27 transaction receipts carry a `FundingUpdated` log from the market's pool with the same `intervalsSettled` (`receiptsMatchingIndexer: 27`).
+- On all 27, the `cumulativeFundingPerUnit` step is exactly one interval at the emitted rate (`stepOfOneInterval: 27`). For ADA (17 intervals) and ETH (47) the late settlement is the market's first indexed one, so its step is measured from 0.
+- All 27 transaction receipts carry a `FundingUpdated` log from the market's pool with the same `intervalsSettled` (`receiptsMatchingIndexer: 27`). The receipts confirm the length of each gap; the cumulative step confirms what was charged.
 
 Examples:
 

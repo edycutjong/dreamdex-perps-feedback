@@ -224,7 +224,7 @@
       "intervalsSettled": 17,
       "intervalsAccrued": 1,
       "fundingIntervalSec": 3600,
-      "intervalsInCumulativeStep": null,
+      "intervalsInCumulativeStep": 1,
       "secondsNotAccrued": 57600,
       "txHash": "0x671f18d0f1b7dbdc4340dba54bdb1c0b774e3c8701325bee982fefaa1e53d3f2",
       "receiptStatus": "success",
@@ -350,7 +350,7 @@
       "intervalsSettled": 47,
       "intervalsAccrued": 1,
       "fundingIntervalSec": 3600,
-      "intervalsInCumulativeStep": null,
+      "intervalsInCumulativeStep": 1,
       "secondsNotAccrued": 165600,
       "txHash": "0x67e3e4f49c8db6629ed84a6fd7fc6d082d8415c7d4a71177c411d078345ba9cc",
       "receiptStatus": "success",
@@ -386,7 +386,7 @@
     }
   ],
   "receiptsMatchingIndexer": 27,
-  "stepOfOneInterval": 25,
+  "stepOfOneInterval": 27,
   "hoursNotAccruedByMarket": {
     "ZRO": 13,
     "LIT": 14,
