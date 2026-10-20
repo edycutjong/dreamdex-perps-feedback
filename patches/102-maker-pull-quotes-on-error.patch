@@ -1,0 +1,178 @@
+diff --git a/strategies/perp-maker/src/index.ts b/strategies/perp-maker/src/index.ts
+index 56787b6..aa32337 100644
+--- a/strategies/perp-maker/src/index.ts
++++ b/strategies/perp-maker/src/index.ts
+@@ -105,92 +105,95 @@ async function main(): Promise<void> {
+ 
+   let resting: Quote = { atMark: 0 };
+ 
+-  while (!stopped()) {
+-    // Same snapshot trap as everywhere else: the row has to be re-read, or the
+-    // quote is centred on the mark this process started with.
+-    const fresh = await requireMarket(ctx.exchange, market.symbol, { reload: true });
+-    // Quote around the mark the pool acts on. The row's copy lags by tens of
+-    // minutes, which on a quiet market is a quote sitting where nobody trades.
+-    const mark = (await liveMark(ctx.exchange, fresh)) ?? 0;
+-    if (!(mark > 0)) {
+-      console.log("market is un-priceable right now, holding off this cycle");
+-      await sleep(REFRESH_MS, stopped);
+-      continue;
+-    }
++  try {
++    while (!stopped()) {
++      // Same snapshot trap as everywhere else: the row has to be re-read, or the
++      // quote is centred on the mark this process started with.
++      const fresh = await requireMarket(ctx.exchange, market.symbol, { reload: true });
++      // Quote around the mark the pool acts on. The row's copy lags by tens of
++      // minutes, which on a quiet market is a quote sitting where nobody trades.
++      const mark = (await liveMark(ctx.exchange, fresh)) ?? 0;
++      if (!(mark > 0)) {
++        console.log("market is un-priceable right now, holding off this cycle");
++        await sleep(REFRESH_MS, stopped);
++        continue;
++      }
+ 
+-    // Re-quote only when the mark has moved past the trigger. Cancelling and
+-    // replacing on every cycle burns gas and loses queue position for nothing.
+-    const drift = resting.atMark > 0 ? Math.abs(mark - resting.atMark) / resting.atMark * 10_000 : Infinity;
+-    if (drift < REQUOTE_BPS) {
+-      await sleep(REFRESH_MS, stopped);
+-      continue;
+-    }
++      // Re-quote only when the mark has moved past the trigger. Cancelling and
++      // replacing on every cycle burns gas and loses queue position for nothing.
++      const drift = resting.atMark > 0 ? Math.abs(mark - resting.atMark) / resting.atMark * 10_000 : Infinity;
++      if (drift < REQUOTE_BPS) {
++        await sleep(REFRESH_MS, stopped);
++        continue;
++      }
+ 
+-    if (resting.bid || resting.ask) {
+-      for (const id of [resting.bid, resting.ask]) {
+-        if (id !== undefined) await cancelQuietly(ctx, market, id);
++      if (resting.bid || resting.ask) {
++        for (const id of [resting.bid, resting.ask]) {
++          if (id !== undefined) await cancelQuietly(ctx, market, id);
++        }
++        resting = { atMark: 0 };
+       }
+-      resting = { atMark: 0 };
+-    }
+ 
+-    const inventory = me ? await inventoryUsdso(ctx, fresh, mark) : 0;
+-    // Leaning long: push the bid down and pull the ask in, so the ask fills
+-    // first and brings the book back to flat.
+-    const lean = MAX_POSITION > 0 ? Math.max(-1, Math.min(1, inventory / MAX_POSITION)) : 0;
+-    const skew = (SKEW_BPS / 10_000) * lean;
+-    const half = HALF_SPREAD_BPS / 10_000;
+-    const bidPx = BigInt(Math.round(mark * (1 - half - skew) * 1e18));
+-    const askPx = BigInt(Math.round(mark * (1 + half - skew) * 1e18));
+-
+-    const wanted = sizeForNotional(NOTIONAL, fresh.info, mark);
+-    const next: Quote = { atMark: mark };
+-
+-    // If one leg throws after the other is already resting, pull the placed leg
+-    // before the error propagates: a bot that exits here would otherwise leave a
+-    // one-sided quote trading on the book with nobody watching it.
+-    try {
+-      for (const [side, price] of [["long", bidPx] as const, ["short", askPx] as const]) {
+-        // Do not add to a side that is already at the cap. The other side stays
+-        // quoted, which is how the position comes back rather than getting stuck.
+-        const wouldExceed = side === "long" ? inventory >= MAX_POSITION : inventory <= -MAX_POSITION;
+-        if (wouldExceed) {
+-          console.log(`${side} side held back: inventory ${inventory.toFixed(2)} USDso is at the cap`);
+-          continue;
++      const inventory = me ? await inventoryUsdso(ctx, fresh, mark) : 0;
++      // Leaning long: push the bid down and pull the ask in, so the ask fills
++      // first and brings the book back to flat.
++      const lean = MAX_POSITION > 0 ? Math.max(-1, Math.min(1, inventory / MAX_POSITION)) : 0;
++      const skew = (SKEW_BPS / 10_000) * lean;
++      const half = HALF_SPREAD_BPS / 10_000;
++      const bidPx = BigInt(Math.round(mark * (1 - half - skew) * 1e18));
++      const askPx = BigInt(Math.round(mark * (1 + half - skew) * 1e18));
++
++      const wanted = sizeForNotional(NOTIONAL, fresh.info, mark);
++      const next: Quote = { atMark: mark };
++
++      // If one leg throws after the other is already resting, pull the placed leg
++      // before the error propagates: a bot that exits here would otherwise leave a
++      // one-sided quote trading on the book with nobody watching it.
++      try {
++        for (const [side, price] of [["long", bidPx] as const, ["short", askPx] as const]) {
++          // Do not add to a side that is already at the cap. The other side stays
++          // quoted, which is how the position comes back rather than getting stuck.
++          const wouldExceed = side === "long" ? inventory >= MAX_POSITION : inventory <= -MAX_POSITION;
++          if (wouldExceed) {
++            console.log(`${side} side held back: inventory ${inventory.toFixed(2)} USDso is at the cap`);
++            continue;
++          }
++          const sized = me
++            ? await sizeOrder(ctx.exchange, { market: fresh, account: me, side, price, wanted })
++            : { ok: true as const, quantity: wanted };
++          if (!sized.ok) {
++            console.log(`${side} side skipped: ${sized.reason}`);
++            continue;
++          }
++          const placed = await placePerp({
++            ctx,
++            market: fresh,
++            side,
++            price,
++            quantity: sized.quantity,
++            orderType: ORDER_TYPE.POST_ONLY,
++            label: "quote",
++          });
++          if (side === "long") next.bid = placed.orderId;
++          else next.ask = placed.orderId;
+         }
+-        const sized = me
+-          ? await sizeOrder(ctx.exchange, { market: fresh, account: me, side, price, wanted })
+-          : { ok: true as const, quantity: wanted };
+-        if (!sized.ok) {
+-          console.log(`${side} side skipped: ${sized.reason}`);
+-          continue;
++      } catch (err) {
++        for (const id of [next.bid, next.ask]) {
++          if (id !== undefined) await cancelQuietly(ctx, market, id);
+         }
+-        const placed = await placePerp({
+-          ctx,
+-          market: fresh,
+-          side,
+-          price,
+-          quantity: sized.quantity,
+-          orderType: ORDER_TYPE.POST_ONLY,
+-          label: "quote",
+-        });
+-        if (side === "long") next.bid = placed.orderId;
+-        else next.ask = placed.orderId;
++        throw err;
+       }
+-    } catch (err) {
+-      for (const id of [next.bid, next.ask]) {
+-        if (id !== undefined) await cancelQuietly(ctx, market, id);
+-      }
+-      throw err;
+-    }
+-
+-    resting = next;
+-    await sleep(REFRESH_MS, stopped);
+-  }
+ 
+-  // Leaving quotes on the book after the process exits is how a stopped bot
+-  // keeps trading.
+-  for (const id of [resting.bid, resting.ask]) {
+-    if (id !== undefined) await cancelQuietly(ctx, market, id);
++      resting = next;
++      await sleep(REFRESH_MS, stopped);
++    }
++  } finally {
++    // Leaving quotes on the book after the process exits is how a stopped bot
++    // keeps trading. That holds for an error exit as much as for Ctrl-C: a read
++    // that fails mid-cycle must not leave the last pair resting.
++    for (const id of [resting.bid, resting.ask]) {
++      if (id !== undefined) await cancelQuietly(ctx, market, id);
++    }
+   }
+   console.log("quotes pulled, exiting");
+   await shutdown(ctx);
