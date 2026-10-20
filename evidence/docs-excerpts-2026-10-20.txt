@@ -1,0 +1,74 @@
+# Live docs text, captured 2026-10-20 17:11-17:14 UTC (2026-10-21 00:11-00:14 UTC+7) with headless Chromium (desktop UA), hydrated page body
+
+## https://app.testnet.dreamdex.io/docs/trading/perps-testnet (fees table)
+Maker fee	0
+Taker fee	0
+Funding	Paid between longs and shorts every hour, never to the protocol. See Funding
+
+## https://app.testnet.dreamdex.io/docs/trading/perps-testnet (Markets table and the paragraph under it)
+All 21 markets are margined in USDso. Paper USDso shows whether the Perps Arena credit can open positions in that market (see Paper USDso).
+
+Market	Max leverage	Initial / maintenance margin	Price tick	Min size	Open interest cap	Paper USDso
+BTC-PERP	20x	5% / 2.5%	0.1	0.00013 BTC	246.81545 BTC	Yes
+ETH-PERP	20x	5% / 2.5%	0.01	0.004 ETH	3,995.6125 ETH	Yes
+HYPE-PERP	20x	5% / 2.5%	0.01	0.12 HYPE	23,812.72 HYPE	Yes
+SOL-PERP	20x	5% / 2.5%	0.01	0.1 SOL	47,654.44 SOL	Yes
+XRP-PERP	20x	5% / 2.5%	0.0001	6.9 XRP	344,632 XRP	Yes
+ADA-PERP	10x	10% / 5%	0.0001	46 ADA	2,254,678 ADA	Yes
+AVAX-PERP	10x	10% / 5%	0.001	1.4 AVAX	66,672.2 AVAX	Yes
+BNB-PERP	10x	10% / 5%	0.001	0.014 BNB	693.975 BNB	Yes
+DOGE-PERP	10x	10% / 5%	0.00001	120 DOGE	5,613,590 DOGE	Yes
+LINK-PERP	10x	10% / 5%	0.001	0.9 LINK	42,643.6 LINK	Yes
+NEAR-PERP	10x	10% / 5%	0.0001	5.1 NEAR	250,410 NEAR	Yes
+SUI-PERP	10x	10% / 5%	0.0001	13 SUI	635,009 SUI	Yes
+XLM-PERP	10x	10% / 5%	0.0001	54 XLM	2,677,780 XLM	Yes
+1000PEPE-PERP	5x	20% / 10%	0.0000001	2,700 1000PEPE	130,285,600 1000PEPE	No
+LIT-PERP	5x	20% / 10%	0.0001	2.8 LIT	138,896.6 LIT	No
+PUMP-PERP	5x	20% / 10%	0.000001	1,800 PUMP	87,993,700 PUMP	No
+TAO-PERP	5x	20% / 10%	0.001	0.044 TAO	2,185.491 TAO	Yes
+VVV-PERP	5x	20% / 10%	0.001	0.44 VVV	21,786.14 VVV	No
+WLD-PERP	5x	20% / 10%	0.0001	26 WLD	1,264,000 WLD	Yes
+ZEC-PERP	5x	20% / 10%	0.001	0.009 ZEC	420 ZEC	No
+ZRO-PERP	5x	20% / 10%	0.0001	5.1 ZRO	250,599.5 ZRO	No
+These figures are read from the live markets and can be retuned at any time. The open interest cap is market-wide, across every account, and is held in the base asset. A single account is capped at a tenth of it on most markets.
+
+## https://app.testnet.dreamdex.io/docs/trading/perps-testnet/margin-and-liquidations (Paper USDso)
+Paper USDso
+
+The 1,000 USDso that Perps Arena gives you is a credit voucher. It counts as margin like any other USDso, with a few rules while any of it remains in the account:
+
+It can't be withdrawn. Only USDso above the voucher balance can leave the Perps account.
+Only some markets. You can open or increase positions only in the markets marked Yes under Paper USDso in the market table. The six newest markets are not on that list.
+Your leverage setting can't be changed while it remains.
+Reducing and closing are never blocked, in any market.
+No builder fees are charged on the account.
+
+You can add your own USDso alongside it; both sit in one balance. A voucher can be taken back 14 days after it was granted, but only while the account has no positions and no resting orders: it never forces a position closed.
+
+## https://app.testnet.dreamdex.io/docs/trading/perps-testnet/funding (page body)
+Funding
+A perp has no expiry date, so funding payments keep its price close to the asset's index price instead. Funding is paid directly between longs and shorts: the protocol takes no cut.
+Who pays whom
+Perp above the index (positive funding): longs pay shorts.
+Perp below the index (negative funding): shorts pay longs.
+Paying the side that trades against the gap is what pulls the perp back toward the index.
+When it is paid
+Rate window	8 hours
+Settlement	Every hour
+The funding rate is quoted per 8-hour window, and each hourly settlement applies an eighth of it:
+Hourly payment = position size × index price × funding rate / 8
+For example, a 1 BTC long with the index at 100,000 USDso and a funding rate of 0.08% pays 1 × 100,000 × 0.0008 / 8 = 10 USDso to shorts for that hour.
+Funding is applied to your position the next time it is touched, by a trade, a withdrawal or a liquidation, and everything owed since the last time is settled at once. The result is the same as paying every hour.
+Both the window and the settlement interval are per-market settings that can change. On testnet every market currently uses an 8-hour window settled hourly.
+
+## https://app.testnet.dreamdex.io/docs/developers/perps-testnet (Trade an app wallet with a bot; Common pitfalls)
+To have code trade a wallet you use in the app, link your key to it with Link a Bot: the key can then place, cancel and reduce orders for that wallet, and nothing else. The open-source dreamDEX bot kit does this when OWNER_ADDRESS is set to the linked wallet, and the dreamBot Builder sets up a perps bot for you.
+The SDK reads the chain over WebSocket. An environment that only proxies HTTP fails on the first chain read with genesis check failed. Give it access to the WebSocket endpoint above.
+Paper USDso blocks some markets. Increasing a position in a market outside the credit's allowlist reverts, and getMaxPerpOrderSize reports it as limitedBy: "voucherBlocked".
+Each account has a position cap per market, a tenth of the market's open interest cap on most markets. An order that would take the account past it reverts with MaxPositionSizeExceeded() (0x714b36d6); getMaxPerpOrderSize reports the cap as maxPositionSize.
+
+## Negative search: "forgiv" (forgive / forgiven) on the four pages above
+trading: 0 matches
+margin: 0 matches
+funding: 0 matches
+dev: 0 matches
