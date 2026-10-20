@@ -1,0 +1,18 @@
+{
+  "sdk": "0.32.1",
+  "eligibility": {
+    "eligible": true,
+    "grantAmount": "1000000000000000000000"
+  },
+  "errorsInSdkAbi": 546,
+  "claim": {
+    "name": "ContractRevertError",
+    "message": "@somnia-chain/markets-sdk: claim reverted: for an unknown reason.",
+    "errorName": null,
+    "reason": "for an unknown reason.",
+    "data": "0x3e31dcc2",
+    "address": "0x2ACD9EFdA721450906bfE1bef3edE269636E42C4",
+    "functionName": "claim",
+    "selectorKnownToSdk": false
+  }
+}
