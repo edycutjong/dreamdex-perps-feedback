@@ -11,13 +11,12 @@ Shortcut: `node repro/104-botkit-guard-exits-on-failed-read.mjs` does steps 1-4 
 4. `repro/botkit/run-botkit.sh 104 patches/104-guard-survive-failed-read.patch`: all 32 pass. The guard logs the failure, polls again, and sends one IOC sell of the whole 1,000,000 raw units (0.01 BTC) (`evidence/104-patched-run.txt`).
 
 ## Expected
-The guard's header says it "watches margin health and reduces a position before the protocol does it for you", and the loop comment at `index.ts:151-152` says "One market refusing ... must not stop the guard watching the rest." The `watchList` comment says the guard is built to work "at the only moment it matters", when the venue is in trouble, which is also when the indexer and RPC are most likely to error.
+The guard's header says it "watches margin health and reduces a position before the protocol does it for you". The comment on the existing `catch` around the close (`index.ts:151-152`) says "One market refusing ... must not stop the guard watching the rest.", and the `watchList` comment says the guard is built to work "at the only moment it matters", when the venue is in trouble.
 So a failed read in one poll should be logged and retried on the next one, not end the process.
 
 ## Actual
 Only the `closePosition` calls are inside a `try/catch` (`index.ts:153-163`). Everything that runs before them in a cycle is not: `watchList` (`index.ts:128`, which reads the account's positions when `PERP_SYMBOL` is blank), `marginSnapshot` (`:137`), `positionIn` (`:139`) and `liveMark`'s caller (`:142`). A throw from any of them leaves `main()`, which ends in `process.exit(1)` (`index.ts:177`). In the test that means the failed position read, at a moment when the account is already below the flatten threshold, ends the guard before it acts. Between the exit and any restart nothing is watching the account.
 What happens next depends on the deployment: the repo's `railway.toml` restarts on failure at most 10 times (`restartPolicyType = "ON_FAILURE"`, `restartPolicyMaxRetries = 10`), after which a guard that keeps meeting the error stays down. The restart path was not run; the test shows only the exit.
-The other strategies end the same way on a failed read; this report is limited to `perp-guard`, whose job is to be running when margin falls.
 
 ## Evidence
 - `evidence/104-upstream-run.txt`: pristine upstream (1 failed, 31 passed), failing assertion `expect(code).toBe(0)` with 1 received.
