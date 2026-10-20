@@ -9,6 +9,7 @@ Area: docs
 
 ## Expected
 Docs page `/docs/trading/perps-testnet`, after the Markets table: "A single account is capped at a tenth of it on most markets."
+The developer page `/docs/developers/perps-testnet` ("Common pitfalls") repeats it: "Each account has a position cap per market, a tenth of the market's open interest cap on most markets."
 So `maxPositionSize / maxOpenInterest` should be 0.1 on most markets.
 
 ## Actual
