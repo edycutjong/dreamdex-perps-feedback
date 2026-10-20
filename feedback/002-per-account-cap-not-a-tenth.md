@@ -13,7 +13,7 @@ So `maxPositionSize / maxOpenInterest` should be 0.1 on most markets.
 
 ## Actual
 The ratio is 0.1 on 1 market (TAO). It is 0.025 on 6 markets (ZRO, LIT, VVV, 1000PEPE, PUMP, WLD), 0.05 on 10 (XLM, AVAX, LINK, SUI, ADA, DOGE, XRP, HYPE, SOL, ETH), 0.0499 on NEAR and 0.0504 on BNB, and higher on two: ZEC 0.25 and BTC 0.2026.
-A trader sizing against the documented rule over-estimates what a pool accepts on 18 markets (it will hit `MaxPositionSizeExceeded`) and under-estimates it on ZEC and BTC (0.25 and 0.2026).
+A trader sizing against the documented rule over-estimates what a pool accepts on 18 markets (the pool's `maxPositionSize` is below a tenth of the documented cap) and under-estimates it on ZEC and BTC (0.25 and 0.2026).
 
 ## Evidence
 - `evidence/002-run1.json`, `evidence/002-run2.json`: two fresh-process runs, byte-identical; `byShare` lists markets per ratio.
