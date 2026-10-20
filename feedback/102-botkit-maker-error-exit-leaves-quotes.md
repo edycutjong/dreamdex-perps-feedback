@@ -27,6 +27,6 @@ The repo's own deployment makes this repeat: `railway.toml` sets `restartPolicyT
 
 ## Environment
 - `somnia-chain/dreamdex-bot-kit` @ `25798660bbe4674a6f83a960b202852896e2fed4`, `perp-core` resolves `@somnia-chain/markets-sdk` 0.31.0, vitest 2.1.9, Node v22.22.0
-- Network: none (mock exchange)
+- Network: none at test time (mock exchange); the one-command wrapper needs network access to clone and install upstream
 - Wallet: none
 - Date: 2026-10-21 (UTC)
