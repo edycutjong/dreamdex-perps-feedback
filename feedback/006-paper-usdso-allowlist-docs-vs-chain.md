@@ -18,7 +18,7 @@ So `voucherMarketAllowed` should be `false` for the 6 markets the docs mark "No"
 `voucherMarketAllowed` is `true` for all 21 markets (`allowedOnChain: 21`). That includes all 6 markets the docs mark "No": ZRO, LIT, VVV, 1000PEPE, PUMP, ZEC (`docsNoButAllowed`). `voucherLeverageCapX` is 20 on every market, so the "cap not set" case does not apply either.
 The SDK computes `voucherBlocked` as `voucherActive && (!p.voucherMarketAllowed || p.voucherLeverageCapX === 0)` (`dist/perp/margin.js:1023`). With today's allowlist, `getMaxPerpOrderSize` cannot return `limitedBy: "voucherBlocked"` on any market, which is the opposite of what the developer page says.
 The voucher campaign is running: `getPerpVoucherCampaign` returns `grantAmount` 1000 USDso, `startsAt` 1790553600 (2026-09-28 UTC), `endsAt` 1798477478 (2026-12-28 UTC), `leverageCapX` 20.
-So either the three docs passages are out of date, or the allowlist is missing 6 entries. A Perps Arena trader who reads the docs avoids 6 markets the chain lets them trade. A bot that relies on `voucherBlocked` for those 6 markets never sees it.
+So either the three docs passages are out of date, or the allowlist holds 6 markets it should not. A Perps Arena trader who reads the docs avoids 6 markets that the on-chain allowlist allows. A bot that relies on `voucherBlocked` for those 6 markets never sees it.
 
 ## Evidence
 - `evidence/006-run1.json`, `evidence/006-run2.json`: two fresh-process runs, byte-identical (`allowedOnChain`, `docsSayNo`, `docsNoButAllowed`, `campaign`, one row per market with `chainVoucherMarketAllowed` and `voucherLeverageCapX`).
