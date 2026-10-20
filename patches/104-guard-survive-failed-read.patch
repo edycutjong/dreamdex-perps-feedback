@@ -1,5 +1,5 @@
 diff --git a/strategies/perp-guard/src/index.ts b/strategies/perp-guard/src/index.ts
-index 3a94cc4..924b2b2 100644
+index 3a94cc4..4791d8e 100644
 --- a/strategies/perp-guard/src/index.ts
 +++ b/strategies/perp-guard/src/index.ts
 @@ -124,43 +124,53 @@ async function main(): Promise<void> {
@@ -8,7 +8,7 @@ index 3a94cc4..924b2b2 100644
  
 +  // Resolve the watch list once before looping, so a bad PERP_SYMBOL still stops the guard at startup
 +  // instead of being retried forever by the loop below.
-+  if (me) await watchList(ctx, me);
++  await watchList(ctx, me);
 +
    while (!stopped()) {
 -    const markets = await watchList(ctx, me);
