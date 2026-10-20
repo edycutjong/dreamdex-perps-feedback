@@ -1,0 +1,170 @@
+{
+  "sdk": "0.32.1",
+  "marketsWithShareExactlyOneTenth": 1,
+  "totalMarkets": 21,
+  "byShare": {
+    "0.025": [
+      "ZRO",
+      "LIT",
+      "VVV",
+      "1000PEPE",
+      "PUMP",
+      "WLD"
+    ],
+    "0.25": [
+      "ZEC"
+    ],
+    "0.1": [
+      "TAO"
+    ],
+    "0.0499": [
+      "NEAR"
+    ],
+    "0.05": [
+      "XLM",
+      "AVAX",
+      "LINK",
+      "SUI",
+      "ADA",
+      "DOGE",
+      "XRP",
+      "HYPE",
+      "SOL",
+      "ETH"
+    ],
+    "0.0504": [
+      "BNB"
+    ],
+    "0.2026": [
+      "BTC"
+    ]
+  },
+  "rows": [
+    {
+      "market": "ZRO",
+      "maxPositionSize": "25059900000000000000000",
+      "maxOpenInterest": "1002398000000000000000000",
+      "perAccountShare": 0.025
+    },
+    {
+      "market": "LIT",
+      "maxPositionSize": "13889600000000000000000",
+      "maxOpenInterest": "555586400000000000000000",
+      "perAccountShare": 0.025
+    },
+    {
+      "market": "VVV",
+      "maxPositionSize": "2178610000000000000000",
+      "maxOpenInterest": "87144560000000000000000",
+      "perAccountShare": 0.025
+    },
+    {
+      "market": "1000PEPE",
+      "maxPositionSize": "13028500000000000000000000",
+      "maxOpenInterest": "521142400000000000000000000",
+      "perAccountShare": 0.025
+    },
+    {
+      "market": "PUMP",
+      "maxPositionSize": "8799300000000",
+      "maxOpenInterest": "351974800000000",
+      "perAccountShare": 0.025
+    },
+    {
+      "market": "ZEC",
+      "maxPositionSize": "42000000000",
+      "maxOpenInterest": "168000000000",
+      "perAccountShare": 0.25
+    },
+    {
+      "market": "TAO",
+      "maxPositionSize": "218549000000",
+      "maxOpenInterest": "2185491000000",
+      "perAccountShare": 0.1
+    },
+    {
+      "market": "WLD",
+      "maxPositionSize": "126400000000000000000000",
+      "maxOpenInterest": "5056000000000000000000000",
+      "perAccountShare": 0.025
+    },
+    {
+      "market": "NEAR",
+      "maxPositionSize": "50000000000000000000000000000",
+      "maxOpenInterest": "1001640000000000000000000000000",
+      "perAccountShare": 0.0499
+    },
+    {
+      "market": "XLM",
+      "maxPositionSize": "5355560000000",
+      "maxOpenInterest": "107111200000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "AVAX",
+      "maxPositionSize": "13334400000000000000000",
+      "maxOpenInterest": "266688800000000000000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "LINK",
+      "maxPositionSize": "8528600000000000000000",
+      "maxOpenInterest": "170574400000000000000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "SUI",
+      "maxPositionSize": "127000000000000",
+      "maxOpenInterest": "2540036000000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "ADA",
+      "maxPositionSize": "450934000000",
+      "maxOpenInterest": "9018712000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "BNB",
+      "maxPositionSize": "140000000000000000000",
+      "maxOpenInterest": "2775900000000000000000",
+      "perAccountShare": 0.0504
+    },
+    {
+      "market": "DOGE",
+      "maxPositionSize": "112270000000000",
+      "maxOpenInterest": "2245436000000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "XRP",
+      "maxPositionSize": "68926400000",
+      "maxOpenInterest": "1378528000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "HYPE",
+      "maxPositionSize": "2381270000",
+      "maxOpenInterest": "47625440000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "SOL",
+      "maxPositionSize": "4765440000000",
+      "maxOpenInterest": "95308880000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "ETH",
+      "maxPositionSize": "399561200000000000000",
+      "maxOpenInterest": "7991225000000000000000",
+      "perAccountShare": 0.05
+    },
+    {
+      "market": "BTC",
+      "maxPositionSize": "10000000000",
+      "maxOpenInterest": "49363090000",
+      "perAccountShare": 0.2026
+    }
+  ]
+}

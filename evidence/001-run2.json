@@ -1,0 +1,178 @@
+{
+  "sdk": "0.32.1",
+  "rows": [
+    {
+      "market": "ZRO",
+      "docCap": 250599.5,
+      "chainMaxOpenInterest": 1002397.9999999999,
+      "chainOverDoc": 4,
+      "liveOI": 12368.500000000002,
+      "liveOIOverDocCap": 0.049
+    },
+    {
+      "market": "LIT",
+      "docCap": 138896.6,
+      "chainMaxOpenInterest": 555586.4,
+      "chainOverDoc": 4,
+      "liveOI": 4405,
+      "liveOIOverDocCap": 0.032
+    },
+    {
+      "market": "VVV",
+      "docCap": 21786.14,
+      "chainMaxOpenInterest": 87144.56,
+      "chainOverDoc": 4,
+      "liveOI": 194.86,
+      "liveOIOverDocCap": 0.009
+    },
+    {
+      "market": "1000PEPE",
+      "docCap": 130285600,
+      "chainMaxOpenInterest": 521142400,
+      "chainOverDoc": 4,
+      "liveOI": 2953200,
+      "liveOIOverDocCap": 0.023
+    },
+    {
+      "market": "PUMP",
+      "docCap": 87993700,
+      "chainMaxOpenInterest": 351974800,
+      "chainOverDoc": 4,
+      "liveOI": 4678800,
+      "liveOIOverDocCap": 0.053
+    },
+    {
+      "market": "ZEC",
+      "docCap": 420,
+      "chainMaxOpenInterest": 1680,
+      "chainOverDoc": 4,
+      "liveOI": 54.461,
+      "liveOIOverDocCap": 0.13
+    },
+    {
+      "market": "TAO",
+      "docCap": 2185.491,
+      "chainMaxOpenInterest": 2185.491,
+      "chainOverDoc": 1,
+      "liveOI": 102.748,
+      "liveOIOverDocCap": 0.047
+    },
+    {
+      "market": "WLD",
+      "docCap": 1264000,
+      "chainMaxOpenInterest": 5056000,
+      "chainOverDoc": 4,
+      "liveOI": 91748.99999999999,
+      "liveOIOverDocCap": 0.073
+    },
+    {
+      "market": "NEAR",
+      "docCap": 250410,
+      "chainMaxOpenInterest": 1001640.0000000001,
+      "chainOverDoc": 4,
+      "liveOI": 227570.3,
+      "liveOIOverDocCap": 0.909
+    },
+    {
+      "market": "XLM",
+      "docCap": 2677780,
+      "chainMaxOpenInterest": 10711120,
+      "chainOverDoc": 4,
+      "liveOI": 257945,
+      "liveOIOverDocCap": 0.096
+    },
+    {
+      "market": "AVAX",
+      "docCap": 66672.2,
+      "chainMaxOpenInterest": 266688.8,
+      "chainOverDoc": 4,
+      "liveOI": 11814.1,
+      "liveOIOverDocCap": 0.177
+    },
+    {
+      "market": "LINK",
+      "docCap": 42643.6,
+      "chainMaxOpenInterest": 170574.4,
+      "chainOverDoc": 4,
+      "liveOI": 3306.5,
+      "liveOIOverDocCap": 0.078
+    },
+    {
+      "market": "SUI",
+      "docCap": 635009,
+      "chainMaxOpenInterest": 2540036,
+      "chainOverDoc": 4,
+      "liveOI": 180175,
+      "liveOIOverDocCap": 0.284
+    },
+    {
+      "market": "ADA",
+      "docCap": 2254678,
+      "chainMaxOpenInterest": 9018712,
+      "chainOverDoc": 4,
+      "liveOI": 166168,
+      "liveOIOverDocCap": 0.074
+    },
+    {
+      "market": "BNB",
+      "docCap": 693.975,
+      "chainMaxOpenInterest": 2775.9,
+      "chainOverDoc": 4,
+      "liveOI": 206.662,
+      "liveOIOverDocCap": 0.298
+    },
+    {
+      "market": "DOGE",
+      "docCap": 5613590,
+      "chainMaxOpenInterest": 22454360,
+      "chainOverDoc": 4,
+      "liveOI": 1966510,
+      "liveOIOverDocCap": 0.35
+    },
+    {
+      "market": "XRP",
+      "docCap": 344632,
+      "chainMaxOpenInterest": 1378528,
+      "chainOverDoc": 4,
+      "liveOI": 805755.4,
+      "liveOIOverDocCap": 2.338
+    },
+    {
+      "market": "HYPE",
+      "docCap": 23812.72,
+      "chainMaxOpenInterest": 47625.44,
+      "chainOverDoc": 2,
+      "liveOI": 17435.24,
+      "liveOIOverDocCap": 0.732
+    },
+    {
+      "market": "SOL",
+      "docCap": 47654.44,
+      "chainMaxOpenInterest": 95308.88,
+      "chainOverDoc": 2,
+      "liveOI": 17488.42,
+      "liveOIOverDocCap": 0.367
+    },
+    {
+      "market": "ETH",
+      "docCap": 3995.6125,
+      "chainMaxOpenInterest": 7991.224999999999,
+      "chainOverDoc": 2,
+      "liveOI": 820.1005,
+      "liveOIOverDocCap": 0.205
+    },
+    {
+      "market": "BTC",
+      "docCap": 246.81545,
+      "chainMaxOpenInterest": 493.6309,
+      "chainOverDoc": 2,
+      "liveOI": 285.79349,
+      "liveOIOverDocCap": 1.158
+    }
+  ],
+  "marketsAboveDocCap": [
+    "XRP",
+    "BTC"
+  ],
+  "marketsWhereChainCapDiffersFromDoc": 20
+}
