@@ -4,6 +4,7 @@ Area: app
 
 ## Steps to reproduce
 Target: the official `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, `strategies/perp-maker/src/index.ts`. The exchange is a mock; the strategy and every `perp-core` helper are the real upstream code.
+Shortcut: `node repro/102-botkit-maker-error-exit-leaves-quotes.mjs` does steps 1-4 below from fresh clones (it needs git, npm and network access) and prints `REPRODUCED` when the new test fails on upstream and passes with the patch.
 1. `repro/botkit/run-botkit.sh 102` clones upstream at that commit into a temp directory, installs it, copies in `repro/botkit/harness.ts` and `repro/botkit/102-maker-error-exit-leaves-quotes.test.ts`, and runs the upstream `perp-core` vitest suite plus the new test.
 2. The test runs `perp-maker`'s `main()` with `DRY_RUN=false`. Cycle 1 runs normally and places a post-only bid and ask (order ids 11 and 12 on the mock book). During the wait before cycle 2 the mock indexer starts failing, so `loadMarkets` throws `indexer request failed: 502 Bad Gateway`.
 3. Unmodified upstream: the test fails. The process exits with code 1 and the mock book still holds orders `[11n, 12n]`; `cancelOrder` was never called (`evidence/102-upstream-run.txt`, 1 failed, 31 upstream tests passed).

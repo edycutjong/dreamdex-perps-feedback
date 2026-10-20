@@ -4,6 +4,7 @@ Area: app
 
 ## Steps to reproduce
 Target: the official `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, `strategies/perp-guard/src/index.ts`. The exchange is a mock; the strategy and every `perp-core` helper are the real upstream code.
+Shortcut: `node repro/104-botkit-guard-exits-on-failed-read.mjs` does steps 1-4 below from fresh clones (it needs git, npm and network access) and prints `REPRODUCED` when the new test fails on upstream and passes with the patch.
 1. `repro/botkit/run-botkit.sh 104` clones upstream at that commit into a temp directory, installs it, copies in `repro/botkit/harness.ts` and `repro/botkit/104-guard-exits-on-failed-read.test.ts`, and runs the upstream `perp-core` vitest suite plus the new test.
 2. The test runs `perp-guard`'s `main()` with `DRY_RUN=false` and a blank `PERP_SYMBOL` (the "watch what the account holds" mode) against a mock account holding a 0.01 BTC long at health 1.0x maintenance, below the default 1.15x flatten line. The first `fetchPositions` call throws `indexer request failed: 503 Service Unavailable`; every later call works.
 3. Unmodified upstream: the test fails with `expected 1 to be +0`. The process exited with code 1 on that first failed read, no order was sent, and the position was never reached (`evidence/104-upstream-run.txt`, 1 failed, 31 upstream tests passed).

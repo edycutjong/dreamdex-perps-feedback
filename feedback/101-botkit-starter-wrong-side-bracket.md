@@ -4,6 +4,7 @@ Area: app
 
 ## Steps to reproduce
 Target: the official `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, `strategies/perp-starter/src/index.ts`. Nothing here touches the network or a key; the exchange is a mock and the strategy and every `perp-core` helper are the real upstream code.
+Shortcut: `node repro/101-botkit-starter-wrong-side-bracket.mjs` does steps 1-4 below from fresh clones (it needs git, npm and network access) and prints `REPRODUCED` when the new test fails on upstream and passes with the patch.
 1. `repro/botkit/run-botkit.sh 101` clones upstream at that commit into a temp directory, installs it, copies in `repro/botkit/harness.ts` and `repro/botkit/101-starter-existing-position-side.test.ts`, and runs the upstream `perp-core` vitest suite plus the new test.
 2. The test runs `perp-starter`'s `main()` with `DRY_RUN=false` and `PERP_SIDE` unset (its default, `long`) against a mock account that already holds a 0.01 BTC **short**, with a mock mark of 100,000. It records what the bot sends to `trader.placePerpStopOrder`.
 3. Unmodified upstream: the new test fails (`expected false to be true` on `arm.isBid`), the 31 upstream tests pass (`evidence/101-upstream-run.txt`).
