@@ -10,7 +10,7 @@ Target: the official `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a
 4. `repro/botkit/run-botkit.sh 102 patches/102-maker-pull-quotes-on-error.patch`: same test, all 32 pass, exit code is still 1 and the book is empty (`evidence/102-patched-run.txt`).
 
 ## Expected
-The file's own comments say the opposite of what happens on an error exit. `index.ts:190-191`: "Leaving quotes on the book after the process exits is how a stopped bot keeps trading." The inner `catch` at `index.ts:176-182` exists for the same reason ("pull the placed leg before the error propagates: a bot that exits here would otherwise leave a one-sided quote trading on the book with nobody watching it").
+The file's own comments say the opposite of what happens on an error exit. `index.ts:190-191`: "Leaving quotes on the book after the process exits is how a stopped bot keeps trading." The inner `catch` at `index.ts:148-150` and `179-183` exists for the same reason ("pull the placed leg before the error propagates: a bot that exits here would otherwise leave a one-sided quote trading on the book with nobody watching it").
 So whatever makes `main()` throw while quotes are resting, the bot should cancel them before the process ends.
 
 ## Actual
