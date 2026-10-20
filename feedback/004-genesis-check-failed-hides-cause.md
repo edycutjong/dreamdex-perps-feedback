@@ -1,4 +1,4 @@
-# "genesis check failed" carries no network detail: a refused or 502 WebSocket is only visible on `error.cause`
+# An unreachable WebSocket is thrown as "genesis check failed" although no genesis was compared; the network cause (refused, HTTP 502) is only on `error.cause`
 Severity: normal
 Area: SDK
 
@@ -15,7 +15,7 @@ The message a developer sees should say what failed (connection refused, HTTP 50
 The developer docs already name this message as the symptom of a missing WebSocket, so the message itself is documented; what is missing is the detail that makes it self-explanatory.
 Both cases throw the same error: `RpcError: @somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed`.
 The real failure is only on `error.cause`: `connect ECONNREFUSED 127.0.0.1:9` in the first case, `Unexpected server response: 502` in the second. A caller who logs `error.message` (the usual thing) sees nothing about the network.
-In `dist/client.js` (`makeGenesisCheck`) the check reads block 1 once to detect the retired Hideki v1 genesis, and any `getBlock` failure other than a missing block or an SDK error is re-thrown as `new RpcError("getBlock", "genesis check failed", { cause })`. So a plain connectivity or gateway error is labelled as a genesis problem.
+In `dist/client.js` (`makeGenesisCheck`) the check reads block 1 once to detect the retired Hideki v1 genesis. A block-1 hash on the retired list throws a clear `NotConfiguredError` ("this RPC serves the retired ... genesis"). Any `getBlock` failure other than a missing block or an SDK error is re-thrown as `new RpcError("getBlock", "genesis check failed", { cause })`. So the "genesis check failed" message is only produced when block 1 could not be read at all, that is, when no genesis was compared: a plain connectivity or gateway error is labelled as a genesis problem.
 Related inconsistency: the case `noWsConfigured` (no `webSocket` URL at all) fails with a clear `NotConfiguredError` ("this operation needs chain access — needs wsRpcUrl in createClient (or a chain whose rpcUrls carry a webSocket endpoint)"), so only an unreachable WebSocket gets the misleading label.
 
 ## Evidence
