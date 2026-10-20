@@ -7,7 +7,7 @@ Area: docs
 2. `node repro/011-funding-sign-vs-docs.mjs` (read-only, no key).
 3. What the script does: it reads `getFundingParameters()` on all 21 perp pools. It then pages through every indexed funding settlement up to 2026-10-20 16:00 UTC (`client.listFundingRateHistory`, the same cut-off as report 007, so two runs print the same counts). For each settlement it compares the sign of the settled `fundingRate` with `markPrice` vs `indexPrice` recorded at that settlement.
 
-4. Live check of the same rule against the premium the contract actually uses: `node repro/011-watch-next-settlement.mjs` (read-only, takes up to about an hour). For every market it reads `client.getPerpFundingPremium(pool).timeWeightedPremium` about 20 s before that market's next settlement and the `fundingRate` it then settles.
+4. Live check of the same rule against the premium the contract actually uses: `node repro/011-watch-next-settlement.mjs` (read-only, takes up to about an hour and a half: one settlement per market, plus a 60 s guard). For every market it reads `client.getPerpFundingPremium(pool).timeWeightedPremium` about 20 s before that market's next settlement and the `fundingRate` it then settles.
 
 ## Expected
 App docs page `/docs/trading/perps-testnet/funding`, "Who pays whom": "Perp above the index (positive funding): longs pay shorts." and "Perp below the index (negative funding): shorts pay longs."
@@ -49,7 +49,7 @@ This is independent of reports 007 and 008, which are about how much a late sett
 
 ## Evidence
 - `evidence/011-run1.json`, `evidence/011-run2.json`: two fresh-process runs, byte-identical (`fundingParametersDistinct`, the counts and gap figures above, and three BTC example settlements with mark, index, rate and tx hash).
-- `evidence/011-watch-2026-10-20T1816Z.json`: one run of `repro/011-watch-next-settlement.mjs` (all 21 markets, each across its own settlement; `capturedAt` 2026-10-20T18:16:01Z). A live capture cannot be byte-identical between runs; re-running it captures the next hour.
+- `evidence/011-watch-2026-10-20T1816Z.json`: one run of `repro/011-watch-next-settlement.mjs` (all 21 markets, each across its own settlement; `capturedAt` 2026-10-20T18:16:01Z). A live capture cannot be byte-identical between runs; re-running it captures each market's next settlement.
 - `evidence/docs-excerpts-2026-10-20.txt`: the funding page text quoted above, as served on 2026-10-20 (UTC).
 - `markPrice` and `indexPrice` are the values recorded with each settlement (`FundingUpdated` event, indexed by `listFundingRateHistory`). The SDK says the contract prices funding from a time-weighted order-book premium (`dist/perp/state.d.ts:195`, "PRE-clamp"), not from the mark at one instant. So this report does not claim the mark alone sets the sign; it shows that the docs' rule, which is stated in terms of perp vs index, fails at 8,831 settlements, and that the docs omit the interest-rate term that accounts for it.
 
