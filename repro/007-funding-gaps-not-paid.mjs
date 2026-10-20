@@ -14,8 +14,12 @@ for (const x of r.late) {
   x.receiptStatus = receipt.status;
   x.receiptIntervalsSettled = log ? Number(decodeEventLog({ abi, data: log.data, topics: log.topics }).args.intervalsSettled) : null;
 }
-const byMarket = {};
-for (const x of r.late) byMarket[x.market] = (byMarket[x.market] ?? 0) + x.secondsNotAccrued / 3600;
+// Headline = settlements that follow an earlier settlement of the same market; a market's first indexed settlement is counted apart.
+const after = r.late.filter((x) => !x.firstSettlement), byMarket = {};
+for (const x of after) byMarket[x.market] = (byMarket[x.market] ?? 0) + x.secondsNotAccrued / 3600;
 console.log(show({ sdk: "0.32.1", ...r, receiptsMatchingIndexer: r.late.filter((x) => x.receiptIntervalsSettled === x.intervalsSettled).length,
-  stepOfOneInterval: r.late.filter((x) => x.intervalsInCumulativeStep === 1).length, hoursNotAccruedByMarket: byMarket }));
+  stepOfOneInterval: r.late.filter((x) => x.intervalsInCumulativeStep === 1).length,
+  lateAfterPreviousSettlement: after.length, hoursNotAccruedAfterPreviousSettlement: after.reduce((t, x) => t + x.secondsNotAccrued / 3600, 0),
+  hoursNotAccruedByMarketAfterPreviousSettlement: byMarket,
+  firstSettlementsCoveringSeveralIntervals: r.late.filter((x) => x.firstSettlement).map((x) => [x.market, x.utc, x.intervalsSettled]) }));
 process.exit(0);

@@ -414,7 +414,9 @@
   ],
   "receiptsMatchingIndexer": 27,
   "stepOfOneInterval": 27,
-  "hoursNotAccruedByMarket": {
+  "lateAfterPreviousSettlement": 25,
+  "hoursNotAccruedAfterPreviousSettlement": 290,
+  "hoursNotAccruedByMarketAfterPreviousSettlement": {
     "ZRO": 13,
     "LIT": 14,
     "VVV": 14,
@@ -427,13 +429,25 @@
     "AVAX": 15,
     "LINK": 11,
     "SUI": 15,
-    "ADA": 28,
+    "ADA": 12,
     "BNB": 4,
     "DOGE": 8,
     "XRP": 16,
     "HYPE": 14,
     "SOL": 74,
-    "ETH": 48,
+    "ETH": 2,
     "BTC": 9
-  }
+  },
+  "firstSettlementsCoveringSeveralIntervals": [
+    [
+      "ADA",
+      "2026-09-25T10:14:42.000Z",
+      17
+    ],
+    [
+      "ETH",
+      "2026-09-24T11:30:53.000Z",
+      47
+    ]
+  ]
 }
