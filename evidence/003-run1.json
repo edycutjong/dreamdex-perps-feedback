@@ -1,0 +1,36 @@
+{
+  "sdk": "0.32.1",
+  "docFile": "docs/PERPS.md",
+  "docLines": {
+    "line": 3,
+    "text": [
+      "Perps are live on testnet: `BTC/USDSO:USDSO` and `ETH/USDSO:USDSO`, backed by",
+      "PerpPool CLOBs riding the same shared OrderBook core as spot and binary."
+    ]
+  },
+  "liveMarketCount": 21,
+  "liveSymbols": [
+    "ZRO",
+    "LIT",
+    "VVV",
+    "1000PEPE",
+    "PUMP",
+    "ZEC",
+    "TAO",
+    "WLD",
+    "NEAR",
+    "XLM",
+    "AVAX",
+    "LINK",
+    "SUI",
+    "ADA",
+    "BNB",
+    "DOGE",
+    "XRP",
+    "HYPE",
+    "SOL",
+    "ETH",
+    "BTC"
+  ],
+  "liveButNotInDoc": 19
+}
