@@ -1,0 +1,3 @@
+place ERR @somnia-chain/markets-sdk: createTriggerOrder reverted: InsufficientMarginAtCreation() 0x806109d7
+bal 49.425394146 -> 49.422861114
+stops []
