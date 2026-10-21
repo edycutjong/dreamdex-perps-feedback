@@ -3,6 +3,7 @@
 // as it was BEFORE the fill (no active pool, imReq 0), and right after the closing sell it is still read as open. Control: `getPerpPosition` (eth_call at latest) agrees with the receipt.
 // Each cycle opens and closes 0.1 SOL at the touch: it costs about the spread (a few thousandths of a USDso).
 // Usage: PROBE_PRIVATE_KEY=0x... [CYCLES=10] node repro/016-margin-reads-pinned-behind-own-fill.mjs
+import { formatUnits } from "viem";
 import { writeMarkets, markets, PROBE_WALLET, show } from "./lib/client.mjs";
 const CYCLES = Number(process.env.CYCLES ?? 10);
 const m = writeMarkets();
@@ -14,6 +15,7 @@ const read = async () => {
   return { marginAccountBlock: Number(ma.asOfBlock), accountEquityBlock: Number(eq.asOfBlock), marginAccountActivePools: ma.activePerpPools.length, marginAccountImReq: ma.imReq.toString(), controlPositionSize: pos.size.toString() };
 };
 const touch = async () => { const t = (await m.client.getBookTopsOnchain([{ id: sol.id, poolAddress: sol.poolAddress }])).tops[sol.poolAddress]; return { bid: BigInt(t.bestBid), ask: BigInt(t.bestAsk) }; };
+const funds = { marginUnlockedUsdso: formatUnits((await m.client.getMarginAccount(sol.marginBank, PROBE_WALLET)).unlockedCollateralBalance, 18) };
 const rows = [];
 for (let i = 0; i < CYCLES; i++) {
   let t = await touch();
@@ -28,7 +30,8 @@ for (let i = 0; i < CYCLES; i++) {
 const summary = { cycles: CYCLES,
   marginAccountReadBeforeOwnFill: rows.filter((r) => r.afterOpen.marginAccountBlock < r.openReceiptBlock).length,
   marginAccountShowsNoPositionAfterFill: rows.filter((r) => r.afterOpen.marginAccountActivePools === 0).length, controlShowsPositionAfterFill: rows.filter((r) => r.afterOpen.controlPositionSize === quantity.toString()).length,
+  accountEquityReadBeforeOwnFill: rows.filter((r) => r.afterOpen.accountEquityBlock < r.openReceiptBlock).length, accountEquityReadBeforeOwnClose: rows.filter((r) => r.afterClose.accountEquityBlock < r.closeReceiptBlock).length,
   marginAccountReadBeforeOwnClose: rows.filter((r) => r.afterClose.marginAccountBlock < r.closeReceiptBlock).length,
   marginAccountStillShowsPositionAfterClose: rows.filter((r) => r.afterClose.marginAccountActivePools > 0).length, controlShowsFlatAfterClose: rows.filter((r) => r.afterClose.controlPositionSize === "0").length };
-console.log(show({ sdk: "0.32.1", pool: sol.poolAddress, quantity: quantity.toString(), rows, summary }));
+console.log(show({ sdk: "0.32.1", funds, pool: sol.poolAddress, quantity: quantity.toString(), rows, summary }));
 process.exit(0);

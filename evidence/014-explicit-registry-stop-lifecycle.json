@@ -1,0 +1,31 @@
+{
+  "sdk": "0.32.1",
+  "stopRegistry": "0x85a0879d19777c343eb317a890d5058ab92b8f5d",
+  "operatorRegistry": "0x6B2FbfeD328FF5F20C0BE7D3C3437613aFFE8D3a",
+  "place": {
+    "tx": "0x54c89356ceebe94495d4628bb37e1568c0d22e5e8c123edb718536c978293723",
+    "status": "success",
+    "gasUsed": "871054",
+    "stopOrderId": "1881567895518374266383",
+    "balanceDeltaNative": "-0.155226324",
+    "gasCostNative": "0.005226324"
+  },
+  "listedAfterPlace": [
+    {
+      "id": "1881567895518374266383",
+      "status": "PENDING",
+      "intent": "opening",
+      "triggerPrice": "138760000000000000000"
+    }
+  ],
+  "cancel": {
+    "tx": "0x38af0c991c5d6b1af5222d25d09508ae8be9752f037f18b6f6f0eddfa0586318",
+    "status": "success",
+    "gasUsed": "93773",
+    "balanceDeltaNative": "0.149437362",
+    "gasCostNative": "0.000562638",
+    "refundedNative": "0.15",
+    "unclaimedSomiAfter": "0"
+  },
+  "listedAfterCancel": []
+}

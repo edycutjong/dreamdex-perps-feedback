@@ -1,0 +1,1097 @@
+{
+  "sdk": "0.32.1",
+  "funds": {
+    "walletUsdso": "50",
+    "marginUnlockedUsdso": "49.6861",
+    "lotSize": "10000000"
+  },
+  "pool": "0xb483ec1fb34996638677c20ab087b16f1896fa53",
+  "quantity": "23350000000",
+  "sdkMaxQuantity": "23340000000",
+  "attempts": [
+    {
+      "i": 0,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x334ca2d7227d153763530c00b52ff1a55e9afd2e50fc0ef718c63a5ec3f5f9ad",
+      "block": 28960616,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 1,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x243755afdb87149ab7b1c174aff4250c5aefcaf4509e0949cdcb62bf58bdaabf",
+      "block": 28960619,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 2,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xc6c1a6c542155c30c80a586e1f28f30ed2537d690c532cc6c913c1c777f5a452",
+      "block": 28960622,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 3,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x6a71f78941012efbdfa5c37db409848795ba34b6ce88906da02b27dc530673fa",
+      "block": 28960636,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 4,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xdc64b7ca883721335c8dbdce9fdced274d69de36b2b8c046c05d4ecd0ca07f74",
+      "block": 28960639,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 5,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x2c54765517e6826c2a378a586de2828878307d48e3be2f4424cd4799546c62ae",
+      "block": 28960642,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 6,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xf7dd29cea02eaf6cbca07bc49c5af3e05745f81dbea2d8dfc6fb21dd18286275",
+      "block": 28960645,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 7,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x65953369ea43c4690e027378f33df763c073942f11e68b2f91f3ee10b61be940",
+      "block": 28960648,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 8,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x94c17baf9e82b43e930bf6d81143bcd15fc9c2f6d51c3da580da35a6dfe6d2df",
+      "block": 28960651,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 9,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": null,
+      "reason": "@somnia-chain/markets-sdk: rpc eth_call failed: RPC Request failed.",
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: @somnia-chain/markets-sdk: rpc eth_call failed: RPC Request failed.",
+      "causeChain": [
+        {
+          "name": "RpcError",
+          "message": "@somnia-chain/markets-sdk: rpc eth_call failed: RPC Request failed."
+        },
+        {
+          "name": "CallExecutionError",
+          "message": "RPC Request failed.",
+          "details": "unable to load historical state"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": -1,
+          "details": "unable to load historical state"
+        },
+        {
+          "message": "unable to load historical state",
+          "code": -1
+        }
+      ],
+      "txHash": "0xc02fa9a1cfb9ef50a406ce3eceae4abe8313372b7a45f0ec971be2eeb6ac51ca",
+      "block": 28960664,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 10,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x66fa60b02990d015ab02d3be1797fe61077b04415700ab1dfffc36811b7df7db",
+      "block": 28960666,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 11,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x7c3856ec810a0a672fc4cafecb8637bd150b364cf725bd1bd493a140e55819ea",
+      "block": 28960669,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 12,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x4f3ef6475d3eca545e0255d91012b7afddb2b9570dffa9da6aa0e11a4b35395c",
+      "block": 28960672,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 13,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xb6911be5656685fcb8405dd7dfacad7bda4c225db884a3b40a3d7e3ac56197a8",
+      "block": 28960675,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 14,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xdb33aecf1574ae3ffc0e6adf2d9d3c8c060ea0c2165aab9d2f85bb9f1b6239a4",
+      "block": 28960678,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 15,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x00eb18c5916aa682ef241ffdca6153d8b4606f2c5f9569c8fe1e466625ea3c79",
+      "block": 28960681,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 16,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x99763c608c36f5eafd41df3e6b39170cf589df88ac70c9d9b12d9023efec27ef",
+      "block": 28960684,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 17,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xea663bf255f44c2b75ab22ba93ab368b6c467cbc6e2b695ed7946bf3dd76503e",
+      "block": 28960687,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 18,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xffbdfd2d09260ccdc91ea941d827689411800394ccf25fbfa7ecb8c4548731dd",
+      "block": 28960690,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 19,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x510957cc1b5b6761acda132507a36747dbe200962f6b7e61ff56a89d51c75b7e",
+      "block": 28960693,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 20,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xde37b45dbd147abf08e93cff95ec4a07356fd8ac382d64fb85b49901b857e42e",
+      "block": 28960696,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 21,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x2f9cd041884c31f198241efdd35f8587633a383e74f908ff486de64dc30ea82e",
+      "block": 28960699,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 22,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x909543d2f682925ac57eb29b0fb300cb8aefa105da61a65a1c36d844eddccee9",
+      "block": 28960702,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 23,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xa74d3947c0dbf088b09851eca20593f390a31f94b0f0b619399a0bace574293c",
+      "block": 28960705,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 24,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xad7ed489ccc9e27352fd2e05ee4557d87269e9690f7560a1cabec55e47c21543",
+      "block": 28960710,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 25,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x51cbd7d2b1069a89e673236e6c8155de9cdabc5741c6ce96bf39c9b740eb9367",
+      "block": 28960713,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 26,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x6d7ccfa68eeafab28c49a4534e1a8dbf75fbfa5dc599e7509b50ca1b246fbac8",
+      "block": 28960716,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 27,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xe13eb87a7d014ddd4f1322b3aa84c67e4b360b17738ce5c3dac9630c830b663b",
+      "block": 28960724,
+      "txStatus": "reverted",
+      "gasUsed": "189537",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 28,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0x6d229381c5168b7a40c07ccbe36df62df9df69724e3446f360f71f6bd8938248",
+      "block": 28960727,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    },
+    {
+      "i": 29,
+      "errorClass": "ContractRevertError",
+      "isContractRevertError": true,
+      "errorName": "Error",
+      "reason": null,
+      "message": "@somnia-chain/markets-sdk: placeOrder reverted: Error(ERC20: transfer amount exceeds balance)",
+      "causeChain": [
+        {
+          "name": "CallExecutionError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "ExecutionRevertedError",
+          "message": "Execution reverted for an unknown reason.",
+          "details": "execution reverted"
+        },
+        {
+          "name": "RpcRequestError",
+          "message": "RPC Request failed.",
+          "code": 3,
+          "details": "execution reverted"
+        },
+        {
+          "message": "execution reverted",
+          "code": 3
+        }
+      ],
+      "txHash": "0xea4bb2b0358abfa8de8277d93ba54fba980ae669c45ff98ed9ccf23d0d4689c0",
+      "block": 28960730,
+      "txStatus": "reverted",
+      "gasUsed": "189362",
+      "replayAtReceiptBlock": "ERC20: transfer amount exceeds balance",
+      "replayAtPreviousBlock": "ERC20: transfer amount exceeds balance"
+    }
+  ],
+  "summary": {
+    "attempts": 30,
+    "decodedReason": 29,
+    "transportTextAsReason": 1
+  }
+}
