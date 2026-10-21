@@ -1,6 +1,6 @@
 # dreamdex-perps-feedback
 
-Reproducible feedback on the dreamDEX perps docs, SDK and app, for the dreamDEX Perps Bounty (Feedback track). 19 reports: 14 on the docs, SDK and app (001-014, checked against the live Hideki testnet wherever chain data is involved), and 5 on the official `somnia-chain/dreamdex-bot-kit` perps examples (101-105), each with a tested patch. One Markdown file per issue in `feedback/`, a script in `repro/`, captured output in `evidence/`.
+Reproducible feedback on the dreamDEX perps docs, SDK and app, for the dreamDEX Perps Bounty (Feedback track). 21 reports: 16 on the docs, SDK and app (001-016, checked against the live Hideki testnet wherever chain data is involved), and 5 on the official `somnia-chain/dreamdex-bot-kit` perps examples (101-105), each with a tested patch. One Markdown file per issue in `feedback/`, a script in `repro/`, captured output in `evidence/`.
 
 ## Reports
 
@@ -20,6 +20,8 @@ Reproducible feedback on the dreamDEX perps docs, SDK and app, for the dreamDEX 
 | 012 | [Voucher self-claim reverts for a flat, never-claimed address although the developer docs and `getPerpVoucherEligibility` say it should work](feedback/012-voucher-self-claim-reverts-while-eligible.md) | normal | SDK |
 | 013 | [`claimPerpVoucher` throws "claim reverted: for an unknown reason." because the distributor's custom error is not in the SDK error ABI](feedback/013-claim-revert-error-not-decoded.md) | normal | SDK |
 | 014 | [`placePerpStopOrder` throws `NotConfiguredError` unless `operatorRegistry` is passed, although its JSDoc says it is resolved from the config when omitted](feedback/014-stop-order-operator-registry-not-resolved.md) | normal | SDK |
+| 015 | [When an order tx mines and reverts, the SDK sometimes puts its own failed `eth_call` replay in the revert reason: "placeOrder reverted: rpc eth_call failed: RPC Request failed." (9 and 14 of 30 attempts)](feedback/015-reverted-order-reports-rpc-failure-as-revert-reason.md) | normal | sdk |
+| 016 | [Pinned-head reads (`getOpenOrdersOnchain`, `getMarginAccount`, `getAccountEquity`) run behind the receipt the SDK just returned: the order just placed is missing (13 of 20, then 3 of 20), the position just opened is not in the margin account (8 of 10, then 5 of 10)](feedback/016-pinned-head-reads-behind-own-receipt.md) | normal | sdk |
 | 101 | [bot-kit perp-starter arms its take-profit/stop-loss for PERP_SIDE, not for the position it found open: an existing short gets a long's sell-to-close stops](feedback/101-botkit-starter-wrong-side-bracket.md) | normal | app |
 | 102 | [bot-kit perp-maker pulls its quotes only on Ctrl-C: any error thrown between cycles exits the process with the last bid and ask still resting on the book](feedback/102-botkit-maker-error-exit-leaves-quotes.md) | major | app |
 | 103 | [bot-kit cancelQuietly swallows every cancel error, so perp-maker forgets a quote whose cancel failed and quotes a second pair on top of it](feedback/103-botkit-cancel-quietly-hides-failed-cancels.md) | normal | app |
@@ -35,11 +37,12 @@ node repro/NNN-<slug>.mjs
 
 - 001-011, 014: read-only, no key (014 with `OPERATOR_REGISTRY` set sends a transaction).
 - 012 and 013 send the SDK's own `claimPerpVoucher` from a flat testnet wallet (about 0.00014 STT): `PROBE_PRIVATE_KEY=0x… node repro/012-voucher-claim-reverts.mjs`. The other 012 scripts are read-only.
+- 015 and 016 send real transactions from a funded testnet wallet (STT for gas, a few USDso of margin): `PROBE_PRIVATE_KEY=0x… node repro/015-failed-receipt-replay-failure-reported-as-revert-reason.mjs` (30 small reverted orders), `… node repro/016-open-orders-onchain-pinned-behind-own-receipt.mjs` and `… node repro/016-margin-reads-pinned-behind-own-fill.mjs` (they place, cancel or fill and close 0.1 SOL orders). Each prints a `summary` of the counts the report quotes; the counts vary from run to run, the effect does not.
 - 101-105 clone `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, run its vitest suite on the pristine tree (one test fails) and with `patches/NNN-*.patch` applied (all pass). They print `REPRODUCED` on success. Needs `git` and network access.
 
 ## Environment
 
-- `@somnia-chain/markets-sdk` 0.32.1 for 001-014 (pinned in `package.json`); the bot-kit repros 101-105 run against the version the bot-kit resolves (0.31.0). Node 22.
+- `@somnia-chain/markets-sdk` 0.32.1 for 001-016 (pinned in `package.json`); the bot-kit repros 101-105 run against the version the bot-kit resolves (0.31.0). Node 22.
 - Network: Somnia Hideki testnet (chain id 50383), indexer `https://hideki-dev.smk.somnia.host/v1/graphql`.
 - Probe wallet (testnet only): `0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b`.
 - Every figure in a report is printed by its repro or stored in `evidence/`; report 009 says which discovery run was not saved.
