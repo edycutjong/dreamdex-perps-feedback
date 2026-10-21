@@ -1,6 +1,6 @@
 // Live companion to repro/011-funding-sign-vs-docs.mjs. For every perp market: read timeWeightedPremium (SDK: "the premium the
 // NEXT settlement will charge ... PRE-clamp ... Positive means the perp is rich and longs pay") ~20 s before that market's
-// nextFundingAt, then the fundingRate once lastFundingUpdateAt advances. Read-only; takes up to ~1 h (one settlement per market).
+// nextFundingAt, then the fundingRate once lastFundingUpdateAt advances. Read-only; takes up to ~1.5 h (one settlement per market).
 import { markets, show } from "./lib/client.mjs";
 const c = markets().client; const ps = await c.listPerpMarkets();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

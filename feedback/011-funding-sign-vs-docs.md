@@ -7,7 +7,7 @@ Area: docs
 2. `node repro/011-funding-sign-vs-docs.mjs` (read-only, no key).
 3. What the script does: it reads `getFundingParameters()` on all 21 perp pools. It then pages through every indexed funding settlement up to 2026-10-20 16:00 UTC (`client.listFundingRateHistory`, the same cut-off as report 007, so two runs print the same counts). For each settlement it compares the sign of the settled `fundingRate` with `markPrice` vs `indexPrice` recorded at that settlement.
 
-4. Live check of the same rule against the premium the contract actually uses: `node repro/011-watch-next-settlement.mjs` (read-only, takes up to about an hour and a half: one settlement per market, plus a 60 s guard). For every market it reads `client.getPerpFundingPremium(pool).timeWeightedPremium` about 20 s before that market's next settlement and the `fundingRate` it then settles.
+4. Live check of the same rule against the premium the contract actually uses: `node repro/011-watch-next-settlement.mjs` (read-only, takes up to about 1.5 h: one settlement per market, plus a 60 s guard). For every market it reads `client.getPerpFundingPremium(pool).timeWeightedPremium` about 20 s before that market's next settlement and the `fundingRate` it then settles.
 
 ## Expected
 App docs page `/docs/trading/perps-testnet/funding`, "Who pays whom": "Perp above the index (positive funding): longs pay shorts." and "Perp below the index (negative funding): shorts pay longs."
