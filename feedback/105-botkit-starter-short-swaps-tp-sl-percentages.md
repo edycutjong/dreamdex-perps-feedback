@@ -14,7 +14,7 @@ Shortcut: `node repro/105-botkit-starter-short-swaps-tp-sl-percentages.mjs` does
 The file's own log line and the README: `perp-starter ... take-profit ${TAKE_PROFIT_PCT}% stop-loss ${STOP_LOSS_PCT}%` (`index.ts:74`) and `PERP_TAKE_PROFIT_PCT`, `PERP_STOP_LOSS_PCT` in the README's env list. No document defines what the two percentages mean for a short; the names and the long branch (take-profit above the mark by `PERP_TAKE_PROFIT_PCT`, stop-loss below it by `PERP_STOP_LOSS_PCT`) imply it. So for a short with take-profit 2% and stop-loss 1%, the take-profit should sit 2% below the mark (98,000) and the stop-loss 1% above it (101,000). For a long the code already does this: take-profit +2%, stop-loss -1%.
 
 ## Actual
-The levels are computed once, without regard to the side, and then assigned to legs by side (`index.ts:174-177`):
+The levels are computed once, without regard to the side, and then assigned to legs by side (`index.ts:174-177`, simplified):
 ```
 const up   = mark * (1 + TAKE_PROFIT_PCT / 100)
 const down = mark * (1 - STOP_LOSS_PCT / 100)
