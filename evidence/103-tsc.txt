@@ -1,0 +1,7 @@
+# tsc --noEmit with patches/103-*.patch applied to somnia-chain/dreamdex-bot-kit @ 25798660bbe4674a6f83a960b202852896e2fed4
+# typescript Version 5.9.3
+patch applied: 103-cancel-quietly-report-failures.patch
+$ tsc --noEmit -p packages/perp-core
+exit 0
+$ tsc --noEmit -p strategies/perp-maker
+exit 0

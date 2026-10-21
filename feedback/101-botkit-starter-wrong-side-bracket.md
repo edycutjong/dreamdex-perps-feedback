@@ -24,7 +24,7 @@ How the state arises: the account already holds a position on the market when th
 ## Evidence
 - `evidence/101-upstream-run.txt`: the run on pristine upstream (1 failed, 31 passed), the failing assertion is `expect(arm.isBid).toBe(true)`.
 - `evidence/101-patched-run.txt`: the same test with `patches/101-starter-manage-existing-side.patch` applied (32 passed).
-- `patches/101-starter-manage-existing-side.patch`: `const managed: Side = existing ? existing.side : SIDE;` after the position read, then `managed` in place of `SIDE` in the two level lines, the `armBracket` call and the two watched-exit comparisons. The opening path still uses `SIDE`. This patch and patch 105 rewrite the same level lines and do not apply together; a hand merge has to derive 105's `dir` from `managed`, not `SIDE`. `tsc --noEmit` on `strategies/perp-starter` is clean with the patch.
+- `patches/101-starter-manage-existing-side.patch`: `const managed: Side = existing ? existing.side : SIDE;` after the position read, then `managed` in place of `SIDE` in the two level lines, the `armBracket` call and the two watched-exit comparisons. The opening path still uses `SIDE`. This patch and patch 105 rewrite the same level lines and do not apply together; a hand merge has to derive 105's `dir` from `managed`, not `SIDE`. `tsc --noEmit` on `strategies/perp-starter` is clean with the patch (`evidence/101-tsc.txt`).
 - `repro/botkit/101-starter-existing-position-side.test.ts`, `repro/botkit/harness.ts`: the test and the mock exchange. The mock returns fixed values for margin, sizing and mark reads; it does not model the pool, so the test shows what the bot asks for, not how the registry answers.
 
 ## Environment

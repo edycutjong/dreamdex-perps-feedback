@@ -1,0 +1,5 @@
+# tsc --noEmit with patches/105-*.patch applied to somnia-chain/dreamdex-bot-kit @ 25798660bbe4674a6f83a960b202852896e2fed4
+# typescript Version 5.9.3
+patch applied: 105-starter-short-tp-sl-percentages.patch
+$ tsc --noEmit -p strategies/perp-starter
+exit 0
