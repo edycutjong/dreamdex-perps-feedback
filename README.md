@@ -1,6 +1,6 @@
 # dreamdex-perps-feedback
 
-Reproducible feedback on the dreamDEX perps docs, SDK and app, for the dreamDEX Perps Bounty (Feedback track). 19 reports: 14 on the docs and `@somnia-chain/markets-sdk` against the live Hideki testnet (001-014), and 5 on the official `somnia-chain/dreamdex-bot-kit` perps examples (101-105), each with a tested patch. One Markdown file per issue in `feedback/`, a script in `repro/`, captured output in `evidence/`.
+Reproducible feedback on the dreamDEX perps docs, SDK and app, for the dreamDEX Perps Bounty (Feedback track). 19 reports: 14 on the docs, SDK and app (001-014, checked against the live Hideki testnet wherever chain data is involved), and 5 on the official `somnia-chain/dreamdex-bot-kit` perps examples (101-105), each with a tested patch. One Markdown file per issue in `feedback/`, a script in `repro/`, captured output in `evidence/`.
 
 ## Reports
 
@@ -33,16 +33,16 @@ npm install
 node repro/NNN-<slug>.mjs
 ```
 
-- 001-011, 014: read-only, no key.
+- 001-011, 014: read-only, no key (014 with `OPERATOR_REGISTRY` set sends a transaction).
 - 012 and 013 send the SDK's own `claimPerpVoucher` from a flat testnet wallet (about 0.00014 STT): `PROBE_PRIVATE_KEY=0x… node repro/012-voucher-claim-reverts.mjs`. The other 012 scripts are read-only.
 - 101-105 clone `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, run its vitest suite on the pristine tree (one test fails) and with `patches/NNN-*.patch` applied (all pass). They print `REPRODUCED` on success. Needs `git` and network access.
 
 ## Environment
 
-- `@somnia-chain/markets-sdk` 0.32.1 (pinned in `package.json`), Node 22.
+- `@somnia-chain/markets-sdk` 0.32.1 for 001-014 (pinned in `package.json`); the bot-kit repros 101-105 run against the version the bot-kit resolves (0.31.0). Node 22.
 - Network: Somnia Hideki testnet (chain id 50383), indexer `https://hideki-dev.smk.somnia.host/v1/graphql`.
 - Probe wallet (testnet only): `0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b`.
-- Every figure in a report is printed by its repro or stored in `evidence/`.
+- Every figure in a report is printed by its repro or stored in `evidence/`; report 009 says which discovery run was not saved.
 
 ## License
 
