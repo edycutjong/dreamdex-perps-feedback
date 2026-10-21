@@ -1,0 +1,246 @@
+{
+  "sdk": "0.32.1",
+  "pool": "0xb483ec1fb34996638677c20ab087b16f1896fa53",
+  "quantity": "100000000",
+  "rows": [
+    {
+      "i": 0,
+      "openTx": "0x40a875d9f2b138ed553c083142e424cb54b5c90ca422da42c7076468f3136a06",
+      "openReceiptBlock": 28954859,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954855,
+        "accountEquityBlock": 28954855,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0x5527190ba1557dedb40215bd1b5e3a58eb36b954295c6a8158658816e5521ff3",
+      "closeReceiptBlock": 28954863,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954862,
+        "accountEquityBlock": 28954862,
+        "marginAccountActivePools": 1,
+        "marginAccountImReq": "534599222686692500",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 1,
+      "openTx": "0x19f9bcaefcf3ce57ce60602fecf03ebc8379b607f785a0c33b22c7f7306eee38",
+      "openReceiptBlock": 28954867,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954862,
+        "accountEquityBlock": 28954862,
+        "marginAccountActivePools": 1,
+        "marginAccountImReq": "534599222686692500",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0xfbafc4171dd0d42e944a4f740d7e6533411de4e0760865eab3e7b6de90d2cbef",
+      "closeReceiptBlock": 28954871,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954871,
+        "accountEquityBlock": 28954871,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 2,
+      "openTx": "0x8e2186fb48eaae222e6fddf37f6cc44c541df04f37dca3fc7aeecc698cf790bd",
+      "openReceiptBlock": 28954875,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954871,
+        "accountEquityBlock": 28954871,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0xfbd70475151c9cdca5b10bf20591a3a18d6f3d6379fff95b309eff58ed380196",
+      "closeReceiptBlock": 28954879,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954879,
+        "accountEquityBlock": 28954879,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 3,
+      "openTx": "0xa940e863a7e3c2fc52459bef84e7b88f804b9850bdb9ae83d5321906565591e0",
+      "openReceiptBlock": 28954883,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954879,
+        "accountEquityBlock": 28954879,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0x629cc949a9026091896ced8ec5474fa812b055a8153b0eb32b1e26f268db5e62",
+      "closeReceiptBlock": 28954887,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954887,
+        "accountEquityBlock": 28954887,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 4,
+      "openTx": "0x19d277479201d9fec80be07e9e2b0f17944f49be9189e573ce485aa1a1067e88",
+      "openReceiptBlock": 28954892,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954887,
+        "accountEquityBlock": 28954887,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0x898a8c216de132e2e028b128d29f5d794c28dc6a74fb4a5acd4939a96c23d365",
+      "closeReceiptBlock": 28954895,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954895,
+        "accountEquityBlock": 28954895,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 5,
+      "openTx": "0x1e347db194223c248f534433ff50fb22ec3076570e2ac31064bf79670fbd09f7",
+      "openReceiptBlock": 28954900,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954895,
+        "accountEquityBlock": 28954895,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0xa23eabedcf8f24cc33a75155d54706a0f696d498c5d47a19e409f54fdbcbf9ad",
+      "closeReceiptBlock": 28954903,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954903,
+        "accountEquityBlock": 28954903,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 6,
+      "openTx": "0x153baf3e78b4006503bc278ed28c548b28b51d13a3ce8fb33e43e127eeeaf21f",
+      "openReceiptBlock": 28954908,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954903,
+        "accountEquityBlock": 28954903,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0x6244016552d050b5de11227f0c761e672fad0b556f17ec9521c921a51af3d1d5",
+      "closeReceiptBlock": 28954911,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954911,
+        "accountEquityBlock": 28954911,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 7,
+      "openTx": "0x028062fe52c965d58b4a29c4f15df875f450d75f8c2b3a60ee76798531015336",
+      "openReceiptBlock": 28954916,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954911,
+        "accountEquityBlock": 28954911,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0xadb16f14c2435a270461e483cdee0bea0929c29fb91b824241f73bf4e473dff7",
+      "closeReceiptBlock": 28954919,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954919,
+        "accountEquityBlock": 28954919,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 8,
+      "openTx": "0x8b389d56627346a3b71177e81b434760696392f2f27f160d724a268100ab6fc4",
+      "openReceiptBlock": 28954924,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954919,
+        "accountEquityBlock": 28954919,
+        "marginAccountActivePools": 0,
+        "marginAccountImReq": "0",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0xc1fc75d3d0bd59be572b546dac8dae53877e0e994b9e17222b6a0cbe0d481959",
+      "closeReceiptBlock": 28954935,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954931,
+        "accountEquityBlock": 28954931,
+        "marginAccountActivePools": 1,
+        "marginAccountImReq": "534436791248955000",
+        "controlPositionSize": "0"
+      }
+    },
+    {
+      "i": 9,
+      "openTx": "0x416f7e118987d0af6c9557d23ca94669c9ecbe110109068226baeefe6cb7df4d",
+      "openReceiptBlock": 28954938,
+      "filledOpen": "100000000",
+      "afterOpen": {
+        "marginAccountBlock": 28954938,
+        "accountEquityBlock": 28954938,
+        "marginAccountActivePools": 1,
+        "marginAccountImReq": "534456148537037500",
+        "controlPositionSize": "100000000"
+      },
+      "closeTx": "0x991a495889d8814aeee693ca2306543df2f2e7351556b05fe1ccdcc08fd8b2b0",
+      "closeReceiptBlock": 28954943,
+      "filledClose": "100000000",
+      "afterClose": {
+        "marginAccountBlock": 28954938,
+        "accountEquityBlock": 28954938,
+        "marginAccountActivePools": 1,
+        "marginAccountImReq": "534456148537037500",
+        "controlPositionSize": "0"
+      }
+    }
+  ],
+  "summary": {
+    "cycles": 10,
+    "marginAccountReadBeforeOwnFill": 9,
+    "marginAccountShowsNoPositionAfterFill": 8,
+    "controlShowsPositionAfterFill": 10,
+    "marginAccountReadBeforeOwnClose": 3,
+    "marginAccountStillShowsPositionAfterClose": 3,
+    "controlShowsFlatAfterClose": 10
+  }
+}

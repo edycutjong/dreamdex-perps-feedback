@@ -19,6 +19,7 @@ The gap is known elsewhere. The SDK's own spot operator-grant docs say "no deplo
 ## Evidence
 - `evidence/014-run1.json`, `evidence/014-run2.json`: two fresh-process runs, byte-identical (`hasOperatorPermissionsRegistry: false`, `keyInBundledSets` for the three bundled address sets, the market's `stopRegistry`, `result.name` `NotConfiguredError`, the message above).
 - `evidence/014-explicit-registry-run.txt`: the same script with `OPERATOR_REGISTRY` set (balance, result, balance).
+- `evidence/014-explicit-registry-stop-lifecycle.txt`: with the registry passed and 50 USDso of margin, the same call places a stop-entry (tx `0xa91a66f5bac92549c83dfa4962625b88f4bbf1b0374331133c4e77ea51426b30`) and `cancelPerpStopOrder` refunds the 0.15 SOMI exactly (tx `0x398e22d3052d77780a2f3875c196b463e297b3ce3041a73bbefca5dce95ad019`). So the only missing step in the omitted-registry case is the address resolution.
 - Source: `dist/perp/stops.js:490-492` (`p.operatorRegistry ?? w.addresses().operatorPermissionsRegistry`, then the throw) and `dist/writer.js:610-619`.
 
 ## Environment
