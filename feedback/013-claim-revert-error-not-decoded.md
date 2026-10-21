@@ -4,7 +4,7 @@ Area: SDK
 
 ## Steps to reproduce
 1. `npm install` (pins `@somnia-chain/markets-sdk` 0.32.1).
-2. Put a key with a little STT in `PROBE_PRIVATE_KEY`; the account must be flat and have never claimed (the claim reverts today, see report 012; it costs about 0.00014 STT). This report stays valid if report 012 is fixed on the docs side (self-claim closed on purpose): `claim()` raises `0x3e31dcc2` for every caller tried, including four accounts that already hold a voucher (`evidence/012-claim-call-matrix-run1.json`, `node repro/012-claim-call-matrix.mjs`, no key), so the same unnamed 4 bytes reach anyone who calls it.
+2. Put a key with a little STT in `PROBE_PRIVATE_KEY`; the account must be flat and have never claimed (the claim reverts today, see report 012; it costs about 0.00014 STT). This report stays valid if report 012 is fixed on the docs side (self-claim closed on purpose): `claim()` raises `0x3e31dcc2` for every caller tried, including four accounts that already hold a voucher (`evidence/012-claim-call-matrix-run1.json`, `node repro/012-claim-call-matrix.mjs`, no key), so the same unnamed 4 bytes reach every caller tried.
 3. `node repro/013-claim-revert-undecoded.mjs`. It builds the SDK's own table of error selectors from the exported `contractErrorsAbi`, calls `trader.claimPerpVoucher({ marginBank })`, and prints every field of the error it throws.
 
 ## Expected
@@ -12,7 +12,7 @@ SDK errors reference for 0.32.1 (page "Errors", `ContractRevertError` fields): `
 SDK PERPS.md "Credit vouchers": "Check eligibility before you claim. A failed claim still mines and costs gas". The caller pays for the failure, so the failure should say why.
 
 ## Actual
-The thrown error is `ContractRevertError` with `message` "claim reverted: for an unknown reason.", `errorName: null`, `reason` "for an unknown reason.", `data: "0x3e31dcc2"`, `address` the VoucherDistributor `0x2ACD9EFdA721450906bfE1bef3edE269636E42C4`, `functionName: "claim"`. The script's table over all 546 errors in `contractErrorsAbi` has no entry for `0x3e31dcc2` (`selectorKnownToSdk: false`). The selector does not appear in the public 4byte signature database either (`fourByteLookup: null` in `evidence/012-trace-run1.json`). The code that raises it is inside the distributor implementation `0x9657f0fd53efc01cd108d93c835bb4b517732b43` (`selectorInImplementationBytecode: true` and the trace in the same file), so it is raised in the distributor implementation (its bytecode contains the selector), not by the bank.
+The thrown error is `ContractRevertError` with `message` "@somnia-chain/markets-sdk: claim reverted: for an unknown reason.", `errorName: null`, `reason` "for an unknown reason.", `data: "0x3e31dcc2"`, `address` the VoucherDistributor `0x2ACD9EFdA721450906bfE1bef3edE269636E42C4`, `functionName: "claim"`. The script's table over all 546 errors in `contractErrorsAbi` has no entry for `0x3e31dcc2` (`selectorKnownToSdk: false`). The selector does not appear in the public 4byte signature database either (`fourByteLookup: null` in `evidence/012-trace-run1.json`). The selector is a constant in the distributor implementation `0x9657f0fd53efc01cd108d93c835bb4b517732b43` (`selectorInImplementationBytecode: true`), and the trace in the same file reverts inside it with no inner call, so it is raised by the distributor, not by the bank.
 Only the raw 4 bytes are available to the caller, so the cause of the revert in report 012 cannot be read from the SDK's output.
 
 ## Evidence
