@@ -36,13 +36,13 @@ node repro/NNN-<slug>.mjs
 ```
 
 - 001-011, 014: read-only, no key (014 with `OPERATOR_REGISTRY` set sends a transaction).
-- 012 and 013 send the SDK's own `claimPerpVoucher` from a flat testnet wallet (about 0.00014 STT): `PROBE_PRIVATE_KEY=0x… node repro/012-voucher-claim-reverts.mjs`. The other 012 scripts are read-only.
+- 012 and 013 send the SDK's own voucher claim (012: the calldata from `buildClaimPerpVoucher`; 013: `trader.claimPerpVoucher`) from a flat testnet wallet (about 0.00014 STT): `PROBE_PRIVATE_KEY=0x… node repro/012-voucher-claim-reverts.mjs`. The other 012 scripts are read-only.
 - 015 and 016 (and the follow-up `repro/014-explicit-registry-stop-lifecycle.mjs`) send real transactions from a funded testnet wallet (STT for gas, and USDso margin: the 015 and 016 scripts were run with about 50, 014 needs at least 1): `PROBE_PRIVATE_KEY=0x… ATTEMPTS=30 node repro/015-failed-receipt-replay-failure-reported-as-revert-reason.mjs` (30 small reverted orders), `PROBE_PRIVATE_KEY=0x… CYCLES=20 node repro/016-open-orders-onchain-pinned-behind-own-receipt.mjs` and `PROBE_PRIVATE_KEY=0x… CYCLES=10 node repro/016-margin-reads-pinned-behind-own-fill.mjs` (they place, cancel or fill and close 0.1 SOL orders). 015 and 016 print a `summary` of the counts the report quotes; the counts vary from run to run (015: 1 to 14 of 30); the effect appeared in every saved run.
 - 101-105 clone `somnia-chain/dreamdex-bot-kit` at commit `25798660bbe4674a6f83a960b202852896e2fed4`, run its vitest suite on the pristine tree (one test fails) and with `patches/NNN-*.patch` applied (all pass). They print `REPRODUCED` on success. Needs `git` and network access.
 
 ## Environment
 
-- `@somnia-chain/markets-sdk` 0.32.1 for 001-016 (pinned in `package.json`); the bot-kit repros 101-105 run against the version the bot-kit resolves (0.31.0). Node 22.
+- `@somnia-chain/markets-sdk` 0.32.1 for 001-016 (pinned in `package.json`); the bot-kit repros 101-105 run against the version the bot-kit's `perp-core` package resolves (0.31.0). Node 22.
 - Network: Somnia Hideki testnet (chain id 50383), indexer `https://hideki-dev.smk.somnia.host/v1/graphql`.
 - Probe wallet (testnet only): `0x440E03bb3AAdBE65D5Bf2Ad7f84A64c509ff438b`.
 - Every figure in a report is printed by its repro or stored in `evidence/` (015 runs 1 and 2 did not save the wallet balances); report 009 says which discovery run was not saved.
